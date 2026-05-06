@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c2756u71t8ieo"]
+
+[ext_resource type="PackedScene" uid="uid://cuy7s7elijy6v" path="res://entities/player/scene/player.tscn" id="1_72lju"]
+
+[node name="Test" type="Node2D" unique_id=714938562]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1005294658]
+zoom = Vector2(2, 2)
+
+[node name="Player" parent="." unique_id=303148737 instance=ExtResource("1_72lju")]
+speed = 100.0
