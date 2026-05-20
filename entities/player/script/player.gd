@@ -1,5 +1,5 @@
-extends CharacterBody2D
 class_name Player
+extends CharacterBody2D
 
 @export var speed: float = 300.0
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -14,18 +14,20 @@ enum State {
 	MOVE,
 	ATTACK,
 	HIT,
-	DEAD
+	DEAD,
 }
 
 var current_state = State.MOVE
 
+
 func change_state(new_state: State) -> void:
 	if new_state == current_state:
 		return
-	
+
 	current_state = new_state
 
-func _physics_process(delta: float) -> void:
+
+func _physics_process(_delta: float) -> void:
 	match current_state:
 		State.IDLE:
 			pass
@@ -93,7 +95,7 @@ func attack_animation() -> void:
 func attack() -> void:
 	idle()
 	print("DEBUG: ", attack_duration.time_left)
-	
+
 	if attack_duration.is_stopped():
 		change_state(State.MOVE)
 
