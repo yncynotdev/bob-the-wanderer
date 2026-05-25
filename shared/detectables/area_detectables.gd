@@ -1,0 +1,2 @@
+class_name AreaDetectables
+extends Area2D

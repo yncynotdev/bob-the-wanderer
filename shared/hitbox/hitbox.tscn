@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c1n47oqbroxti"]
+
+[ext_resource type="PackedScene" uid="uid://b3mt1gpm23wyx" path="res://shared/detectables/area_detectables.tscn" id="1_bhgyd"]
+[ext_resource type="Script" uid="uid://d6hjt58brbv0" path="res://shared/hitbox/hitbox.gd" id="2_owchi"]
+
+[node name="Hitbox" unique_id=1935515335 instance=ExtResource("1_bhgyd")]
+monitoring = false
+script = ExtResource("2_owchi")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=864603550]
+debug_color = Color(0.96985906, 0.12673226, 0.30343676, 0.41960785)

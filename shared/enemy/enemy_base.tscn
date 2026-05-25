@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b2ndn0ybwmrf4"]
+
+[ext_resource type="Script" uid="uid://4lhslbukwt3p" path="res://shared/enemy/enemy_base.gd" id="1_dg24u"]
+[ext_resource type="PackedScene" uid="uid://c1n47oqbroxti" path="res://shared/hitbox/hitbox.tscn" id="2_7jtny"]
+[ext_resource type="PackedScene" uid="uid://dj2g3gptrth73" path="res://shared/hurtbox/hurtbox.tscn" id="3_tl8x4"]
+[ext_resource type="PackedScene" uid="uid://3cdnx1374mva" path="res://shared/health/health_component.tscn" id="4_tl8x4"]
+
+[node name="EnemyBase" type="CharacterBody2D" unique_id=2147005555]
+collision_layer = 4
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_dg24u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=249710695]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=475166942]
+
+[node name="Hitbox" parent="." unique_id=1935515335 instance=ExtResource("2_7jtny")]
+collision_layer = 16
+collision_mask = 32
+
+[node name="Hurtbox" parent="." unique_id=1558196444 instance=ExtResource("3_tl8x4")]
+collision_layer = 64
+collision_mask = 8
+
+[node name="HealthComponent" parent="." unique_id=1397975947 instance=ExtResource("4_tl8x4")]
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+
+[editable path="Hitbox"]
+[editable path="Hurtbox"]

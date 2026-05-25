@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://d0bfarnofv346"]
+
+[ext_resource type="Script" uid="uid://c1meoxqfvami6" path="res://shared/weapon/weapon_component.gd" id="1_6h1v1"]
+[ext_resource type="PackedScene" uid="uid://c1n47oqbroxti" path="res://shared/hitbox/hitbox.tscn" id="3_rr8cs"]
+
+[node name="WeaponComponent" type="Sprite2D" unique_id=1858595360]
+visible = false
+script = ExtResource("1_6h1v1")
+
+[node name="Hitbox" parent="." unique_id=1935515335 instance=ExtResource("3_rr8cs")]
+
+[node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=864603550]
+position = Vector2(0, 0.5)
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=610530823]
+one_shot = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+
+[editable path="Hitbox"]

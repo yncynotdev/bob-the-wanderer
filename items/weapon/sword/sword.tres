@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponResource" format=3 uid="uid://duxjivlp3xef0"]
+
+[ext_resource type="Script" uid="uid://bhqtaplme3vkd" path="res://shared/weapon/weapon_res.gd" id="1_0v4jw"]
+[ext_resource type="Texture2D" uid="uid://dap0i7v22gllb" path="res://items/weapon/sword/SpriteInHand.png" id="2_r6r5k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a2t7h"]
+
+[resource]
+script = ExtResource("1_0v4jw")
+damage = 3.0
+weapon_texture = ExtResource("2_r6r5k")
+weapon_position = Vector2(0, 5)
+weapon_hitbox_shape = SubResource("RectangleShape2D_a2t7h")
+weapon_hitbox_size = Vector2(8, 13)
+metadata/_custom_type_script = "uid://bhqtaplme3vkd"

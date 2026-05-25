@@ -1,10 +1,18 @@
 [gd_scene format=3 uid="uid://cuy7s7elijy6v"]
 
 [ext_resource type="Script" uid="uid://diaddu2rasgmu" path="res://entities/player/script/player.gd" id="1_8xc6n"]
+[ext_resource type="Script" uid="uid://dymhou75kqu68" path="res://shared/status/status.gd" id="2_8ivne"]
 [ext_resource type="Texture2D" uid="uid://kcc1i3kr4vfg" path="res://entities/player/assets/Attack.png" id="2_apncy"]
 [ext_resource type="Texture2D" uid="uid://3brf7phm7boe" path="res://entities/player/assets/Dead.png" id="2_qhr48"]
 [ext_resource type="Texture2D" uid="uid://bnpcal8delfeu" path="res://entities/player/assets/Idle.png" id="3_qhr48"]
 [ext_resource type="Texture2D" uid="uid://d0eflu47w3w3k" path="res://entities/player/assets/Walk.png" id="5_c8uo4"]
+[ext_resource type="PackedScene" uid="uid://dj2g3gptrth73" path="res://shared/hurtbox/hurtbox.tscn" id="7_04dpg"]
+[ext_resource type="PackedScene" uid="uid://d0bfarnofv346" path="res://shared/weapon/weapon_component.tscn" id="8_w1ewg"]
+[ext_resource type="Resource" uid="uid://duxjivlp3xef0" path="res://items/weapon/sword/sword.tres" id="9_llfb5"]
+[ext_resource type="PackedScene" uid="uid://3cdnx1374mva" path="res://shared/health/health_component.tscn" id="12_33t0o"]
+
+[sub_resource type="Resource" id="Resource_33t0o"]
+script = ExtResource("2_8ivne")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qptj5"]
 atlas = ExtResource("2_qhr48")
@@ -253,21 +261,48 @@ animations = [{
 radius = 8.0
 height = 18.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04dpg"]
+size = Vector2(16, 17)
+
 [node name="Player" type="CharacterBody2D" unique_id=303148737]
+collision_layer = 2
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_8xc6n")
-speed = 100.0
+status = SubResource("Resource_33t0o")
 attack_duration_time = 0.5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=927110348]
 sprite_frames = SubResource("SpriteFrames_apncy")
-animation = &"attack_down"
+animation = &"idle_down"
 autoplay = "idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=795666308]
 shape = SubResource("CapsuleShape2D_5gr5v")
 
+[node name="Hurtbox" parent="." unique_id=1935515335 instance=ExtResource("7_04dpg")]
+collision_layer = 32
+collision_mask = 16
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0" unique_id=864603550]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_04dpg")
+
+[node name="Hand" type="Node2D" parent="." unique_id=481267757]
+
+[node name="WeaponPlaceholder" type="Node2D" parent="Hand" unique_id=1535134264]
+unique_name_in_owner = true
+
+[node name="WeaponComponent" parent="Hand/WeaponPlaceholder" unique_id=1858595360 node_paths=PackedStringArray("actor") instance=ExtResource("8_w1ewg")]
+weapon_res = ExtResource("9_llfb5")
+actor = NodePath("../../..")
+
 [node name="AttackDuration" type="Timer" parent="." unique_id=2002691546]
 one_shot = true
 
+[node name="HealthComponent" parent="." unique_id=1397975947 instance=ExtResource("12_33t0o")]
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="AttackDuration" to="." method="_on_attack_duration_timeout"]
+
+[editable path="Hurtbox"]

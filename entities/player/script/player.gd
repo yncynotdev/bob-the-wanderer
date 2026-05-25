@@ -1,11 +1,20 @@
 class_name Player
 extends CharacterBody2D
 
-@export var speed: float = 300.0
+@export var status: Status
+@onready var health_component = $HealthComponent
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var weapon_placeholder: Node2D = %WeaponPlaceholder
+@onready var weapon: WeaponComponent = weapon_placeholder.get_child(0)
 
 @onready var attack_duration: Timer = $AttackDuration
 @export var attack_duration_time: float = 1.0
+
+var health: float
+var attack: float
+var defense: float
+var speed: float
 
 var direction = Vector2.ZERO
 
@@ -17,6 +26,9 @@ enum State {
 	DEAD,
 }
 
+var is_attacked: bool = false
+var is_attacked_pressed: bool = false
+
 var current_state = State.MOVE
 
 
@@ -25,6 +37,27 @@ func change_state(new_state: State) -> void:
 		return
 
 	current_state = new_state
+	print('DEBUG: State ', current_state)
+
+
+func _ready() -> void:
+	if !weapon:
+		return
+	else:
+		weapon.connect('on_weapon_attacked', start_attacking)
+		weapon.connect('on_weapon_stop_attacked', stop_attacking)
+
+	health = health_component.health
+	print('DEBUG: Player health ', health)
+
+	attack = status.current_attack
+	print('DEBUG: Player attack ', attack)
+
+	defense = status.current_defense
+	print('DEBUG: Player defense ', defense)
+
+	speed = status.current_speed
+	print('DEBUG: Player speed ', speed)
 
 
 func _physics_process(_delta: float) -> void:
@@ -32,9 +65,9 @@ func _physics_process(_delta: float) -> void:
 		State.IDLE:
 			pass
 		State.MOVE:
-			move()
+			state_move()
 		State.ATTACK:
-			attack()
+			state_attack()
 		State.HIT:
 			pass
 		State.DEAD:
@@ -53,31 +86,43 @@ func _unhandled_input(event: InputEvent) -> void:
 			direction = Vector2.UP
 		elif event.is_action_pressed("down"):
 			direction = Vector2.DOWN
-		elif event.is_action_pressed("attack"):
+		elif event.is_action_pressed("attack") and !is_attacked:
 			attack_duration.start(attack_duration_time)
-			attack_animation()
 			change_state(State.ATTACK)
 
 
 func idle() -> void:
 	velocity = Vector2.ZERO
+	if is_attacked:
+		change_state(State.ATTACK)
 
 
 func move_animation() -> void:
 	match direction:
 		Vector2.LEFT:
 			sprite.play("move_left")
+			weapon_placeholder.position = Vector2(-8.0, 4.0)
+			weapon_placeholder.rotation_degrees = 90.0
 		Vector2.RIGHT:
 			sprite.play("move_right")
+			weapon_placeholder.position = Vector2(8.0, 4.0)
+			weapon_placeholder.rotation_degrees = 270.0
 		Vector2.UP:
 			sprite.play("move_up")
+			weapon_placeholder.position = Vector2(-3.0, -8.0)
+			weapon_placeholder.rotation_degrees = 180.0
 		Vector2.DOWN:
 			sprite.play("move_down")
+			weapon_placeholder.position = Vector2(-3.0, 8.0)
+			weapon_placeholder.rotation_degrees = 0.0
 
 
-func move() -> void:
+func state_move() -> void:
 	move_animation()
 	velocity = direction * speed
+
+	if is_attacked:
+		change_state(State.ATTACK)
 
 
 func attack_animation() -> void:
@@ -92,13 +137,31 @@ func attack_animation() -> void:
 			sprite.play("attack_down")
 
 
-func attack() -> void:
+func state_attack() -> void:
 	idle()
-	print("DEBUG: ", attack_duration.time_left)
 
-	if attack_duration.is_stopped():
+	if is_attacked_pressed:
+		is_attacked_pressed = false
+		attack_animation()
+
+	if !is_attacked:
 		change_state(State.MOVE)
+
+
+func start_attacking() -> void:
+	is_attacked = true
+	is_attacked_pressed = true
+
+
+func stop_attacking() -> void:
+	is_attacked = false
+	is_attacked_pressed = false
 
 
 func _on_attack_duration_timeout() -> void:
 	pass
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area is Hitbox:
+		print('DEBUG: Player ouch')

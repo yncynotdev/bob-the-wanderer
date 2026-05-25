@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://c2756u71t8ieo"]
 
 [ext_resource type="PackedScene" uid="uid://cuy7s7elijy6v" path="res://entities/player/scene/player.tscn" id="1_72lju"]
+[ext_resource type="Script" uid="uid://dymhou75kqu68" path="res://shared/status/status.gd" id="2_ny0t1"]
+[ext_resource type="PackedScene" uid="uid://crjts6djm3w2a" path="res://entities/enemy/bamboo/scene/bamboo.tscn" id="3_r4e4k"]
+
+[sub_resource type="Resource" id="Resource_pnvjf"]
+resource_local_to_scene = true
+script = ExtResource("2_ny0t1")
+metadata/_custom_type_script = "uid://dymhou75kqu68"
+
+[sub_resource type="Resource" id="Resource_6g8e2"]
+resource_local_to_scene = true
+script = ExtResource("2_ny0t1")
+metadata/_custom_type_script = "uid://dymhou75kqu68"
 
 [node name="Test" type="Node2D" unique_id=714938562]
 
@@ -8,4 +20,8 @@
 zoom = Vector2(2, 2)
 
 [node name="Player" parent="." unique_id=303148737 instance=ExtResource("1_72lju")]
-speed = 100.0
+status = SubResource("Resource_pnvjf")
+
+[node name="Bamboo" parent="." unique_id=2147005555 instance=ExtResource("3_r4e4k")]
+position = Vector2(77, 1)
+status = SubResource("Resource_6g8e2")
