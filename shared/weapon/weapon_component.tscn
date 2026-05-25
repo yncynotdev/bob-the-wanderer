@@ -15,6 +15,10 @@ position = Vector2(0, 0.5)
 [node name="AttackTimer" type="Timer" parent="." unique_id=610530823]
 one_shot = true
 
+[node name="AttackCooldownTimer" type="Timer" parent="." unique_id=1055095428]
+one_shot = true
+
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_attack_cooldown_timer_timeout"]
 
 [editable path="Hitbox"]

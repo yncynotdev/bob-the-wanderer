@@ -8,9 +8,6 @@ extends CharacterBody2D
 @onready var weapon_placeholder: Node2D = %WeaponPlaceholder
 @onready var weapon: WeaponComponent = weapon_placeholder.get_child(0)
 
-@onready var attack_duration: Timer = $AttackDuration
-@export var attack_duration_time: float = 1.0
-
 var health: float
 var attack: float
 var defense: float
@@ -86,9 +83,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			direction = Vector2.UP
 		elif event.is_action_pressed("down"):
 			direction = Vector2.DOWN
-		elif event.is_action_pressed("attack") and !is_attacked:
-			attack_duration.start(attack_duration_time)
-			change_state(State.ATTACK)
 
 
 func idle() -> void:
@@ -140,7 +134,7 @@ func attack_animation() -> void:
 func state_attack() -> void:
 	idle()
 
-	if is_attacked_pressed:
+	if is_attacked_pressed and is_attacked:
 		is_attacked_pressed = false
 		attack_animation()
 
@@ -156,10 +150,6 @@ func start_attacking() -> void:
 func stop_attacking() -> void:
 	is_attacked = false
 	is_attacked_pressed = false
-
-
-func _on_attack_duration_timeout() -> void:
-	pass
 
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:

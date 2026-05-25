@@ -12,4 +12,5 @@ weapon_texture = ExtResource("2_r6r5k")
 weapon_position = Vector2(0, 5)
 weapon_hitbox_shape = SubResource("RectangleShape2D_a2t7h")
 weapon_hitbox_size = Vector2(8, 13)
+weapon_attack_duration = 0.5
 metadata/_custom_type_script = "uid://bhqtaplme3vkd"

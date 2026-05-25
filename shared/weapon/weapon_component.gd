@@ -9,9 +9,12 @@ signal on_weapon_stop_attacked
 
 @onready var hitbox = $Hitbox
 @onready var hitbox_collision = $Hitbox/CollisionShape2D
+
 @onready var attack_timer = $AttackTimer
+@onready var attack_cooldown_timer = $AttackCooldownTimer
 
 var is_attacked: bool = false
+var is_attack_cooldown: bool = false
 
 
 func _ready() -> void:
@@ -21,16 +24,15 @@ func _ready() -> void:
 		init_weapon()
 		calculate_collision()
 		hitbox.monitorable = false
-		print('DEBUG: WeaponComponent texture - ', weapon_res.texture_item)
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEvent:
-		if event.is_action_pressed("attack") and !is_attacked:
+		if event.is_action_pressed("attack") and !is_attacked and !is_attack_cooldown:
 			on_weapon_attack()
 
 			is_attacked = true
-			on_weapon_attacked.emit()
+			is_attack_cooldown = true
 
 
 func init_weapon() -> void:
@@ -41,9 +43,12 @@ func init_weapon() -> void:
 
 
 func on_weapon_attack() -> void:
+	on_weapon_attacked.emit()
 	self.visible = true
 	hitbox.monitorable = true
+
 	attack_timer.start(weapon_res.weapon_attack_duration)
+	attack_cooldown_timer.start(weapon_res.weapon_cooldown_duration + weapon_res.weapon_attack_duration)
 
 
 func calculate_collision() -> void:
@@ -65,3 +70,8 @@ func _on_attack_timer_timeout() -> void:
 
 	is_attacked = false
 	on_weapon_stop_attacked.emit()
+
+
+func _on_attack_cooldown_timer_timeout() -> void:
+	is_attacked = false
+	is_attack_cooldown = false
