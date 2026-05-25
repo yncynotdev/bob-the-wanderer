@@ -2,47 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://b2ndn0ybwmrf4" path="res://shared/enemy/enemy_base.tscn" id="1_yc7j7"]
 [ext_resource type="Script" uid="uid://chtabx1bfl2rj" path="res://entities/enemy/bamboo/script/bamboo.gd" id="2_386nr"]
-[ext_resource type="Script" uid="uid://dymhou75kqu68" path="res://shared/status/status.gd" id="3_qtxs5"]
-[ext_resource type="Texture2D" uid="uid://cwjkf1a7kbpf0" path="res://entities/enemy/bamboo/assets/SpriteSheet.png" id="4_y8nne"]
-
-[sub_resource type="Resource" id="Resource_y8nne"]
-script = ExtResource("3_qtxs5")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cwxui"]
-atlas = ExtResource("4_y8nne")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cuo6b"]
-atlas = ExtResource("4_y8nne")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v6f8v"]
-atlas = ExtResource("4_y8nne")
-region = Rect2(0, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yvwb7"]
-atlas = ExtResource("4_y8nne")
-region = Rect2(0, 48, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_mxpif"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cwxui")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cuo6b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v6f8v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yvwb7")
-}],
-"loop": true,
-"name": &"idle_down",
-"speed": 5.0
-}]
+[ext_resource type="Resource" uid="uid://c8ek7m3ebqjtb" path="res://entities/enemy/bamboo/resource/bamboo_status.tres" id="3_y8nne"]
+[ext_resource type="SpriteFrames" uid="uid://bghhypdvrnm6g" path="res://entities/enemy/bamboo/resource/bamboo_animation.tres" id="4_y8nne"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v3e2k"]
 radius = 7.0
@@ -56,10 +17,10 @@ size = Vector2(18, 19)
 
 [node name="Bamboo" unique_id=2147005555 instance=ExtResource("1_yc7j7")]
 script = ExtResource("2_386nr")
-status = SubResource("Resource_y8nne")
+status = ExtResource("3_y8nne")
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=249710695]
-sprite_frames = SubResource("SpriteFrames_mxpif")
+sprite_frames = ExtResource("4_y8nne")
 animation = &"idle_down"
 autoplay = "idle_down"
 metadata/_edit_lock_ = true
@@ -82,9 +43,6 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" parent="Hurtbox" index="0" unique_id=864603550]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_cwxui")
-
-[node name="HealthComponent" parent="." index="4" unique_id=1397975947]
-base_max_health = 10.0
 
 [editable path="Hitbox"]
 [editable path="Hurtbox"]

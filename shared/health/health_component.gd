@@ -6,9 +6,9 @@ signal health_changed(current_health: float, max_health: float)
 
 @export var base_max_health: float = 5
 
-var current_max_health: float = base_max_health
+@onready var current_max_health: float = base_max_health
 
-var health: float = current_max_health:
+@onready var health: float = current_max_health:
 	set = on_set_health
 
 

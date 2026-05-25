@@ -22,7 +22,9 @@ func _ready() -> void:
 		return
 	else:
 		init_weapon()
+
 		calculate_collision()
+
 		hitbox.monitorable = false
 
 
@@ -39,14 +41,23 @@ func _unhandled_input(event: InputEvent) -> void:
 func init_weapon() -> void:
 	texture = weapon_res.weapon_texture
 	position = weapon_res.weapon_position
+
 	hitbox_collision.shape = weapon_res.weapon_hitbox_shape
 	hitbox_collision.shape.size = weapon_res.weapon_hitbox_size
+	hitbox_collision.disabled = true
+
+	hitbox.set_attacker_status(actor.status)
+	hitbox.set_weapon_damage(weapon_res.damage)
+
+	print('DEBUG: Player status on weapon component - ', actor.status)
 
 
 func on_weapon_attack() -> void:
 	on_weapon_attacked.emit()
+
 	self.visible = true
 	hitbox.monitorable = true
+	hitbox_collision.disabled = false
 
 	attack_timer.start(weapon_res.weapon_attack_duration)
 	attack_cooldown_timer.start(weapon_res.weapon_cooldown_duration + weapon_res.weapon_attack_duration)
@@ -64,10 +75,11 @@ func calculate_collision() -> void:
 
 func _on_attack_timer_timeout() -> void:
 	attack_timer.stop()
+	attack_timer.start(weapon_res.weapon_attack_duration)
 
 	self.visible = false
 	hitbox.set_deferred("monitorable", false)
-	attack_timer.start(weapon_res.weapon_attack_duration)
+	hitbox_collision.disabled = true
 
 	is_attacked = false
 	on_weapon_stop_attacked.emit()

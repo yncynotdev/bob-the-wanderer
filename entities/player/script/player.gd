@@ -150,8 +150,3 @@ func start_attacking() -> void:
 func stop_attacking() -> void:
 	is_attacked = false
 	is_attacked_pressed = false
-
-
-func _on_hurtbox_area_entered(area: Area2D) -> void:
-	if area is Hitbox:
-		print('DEBUG: Player ouch')

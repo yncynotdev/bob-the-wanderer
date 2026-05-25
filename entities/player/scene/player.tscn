@@ -270,7 +270,6 @@ collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_8xc6n")
 status = SubResource("Resource_33t0o")
-attack_duration_time = 0.5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=927110348]
 sprite_frames = SubResource("SpriteFrames_apncy")
@@ -280,9 +279,10 @@ autoplay = "idle_down"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=795666308]
 shape = SubResource("CapsuleShape2D_5gr5v")
 
-[node name="Hurtbox" parent="." unique_id=1935515335 instance=ExtResource("7_04dpg")]
+[node name="Hurtbox" parent="." unique_id=1935515335 node_paths=PackedStringArray("health_component") instance=ExtResource("7_04dpg")]
 collision_layer = 32
 collision_mask = 16
+health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0" unique_id=864603550]
 position = Vector2(0, 0.5)
@@ -301,8 +301,8 @@ actor = NodePath("../../..")
 one_shot = true
 
 [node name="HealthComponent" parent="." unique_id=1397975947 instance=ExtResource("12_33t0o")]
+base_max_health = 99.0
 
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="AttackDuration" to="." method="_on_attack_duration_timeout"]
 
 [editable path="Hurtbox"]

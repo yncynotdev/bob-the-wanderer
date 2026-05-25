@@ -4,8 +4,10 @@
 [ext_resource type="Script" uid="uid://b82c2r3670py6" path="res://shared/hurtbox/hurtbox.gd" id="2_dwot6"]
 
 [node name="Hurtbox" unique_id=1935515335 instance=ExtResource("1_biaxa")]
-monitorable = false
+monitoring = false
 script = ExtResource("2_dwot6")
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=864603550]
 debug_color = Color(3.5857408e-06, 0.65123016, 0.09054982, 0.41960785)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
