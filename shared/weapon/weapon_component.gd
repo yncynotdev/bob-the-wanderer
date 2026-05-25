@@ -28,11 +28,12 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEvent:
-		if event.is_action_pressed("attack") and !is_attacked and !is_attack_cooldown:
-			on_weapon_attack()
+		if actor is Player:
+			if event.is_action_pressed("attack") and !is_attacked and !is_attack_cooldown:
+				on_weapon_attack()
 
-			is_attacked = true
-			is_attack_cooldown = true
+				is_attacked = true
+				is_attack_cooldown = true
 
 
 func init_weapon() -> void:
