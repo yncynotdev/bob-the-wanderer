@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://d6hjt58brbv0" path="res://shared/hitbox/hitbox.gd" id="2_owchi"]
 
 [node name="Hitbox" unique_id=1935515335 instance=ExtResource("1_bhgyd")]
-monitorable = false
 script = ExtResource("2_owchi")
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=864603550]

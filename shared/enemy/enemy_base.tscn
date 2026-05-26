@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dj2g3gptrth73" path="res://shared/hurtbox/hurtbox.tscn" id="3_tl8x4"]
 [ext_resource type="PackedScene" uid="uid://3cdnx1374mva" path="res://shared/health/health_component.tscn" id="4_tl8x4"]
 
-[node name="EnemyBase" type="CharacterBody2D" unique_id=2147005555]
+[node name="EnemyBase" type="CharacterBody2D" unique_id=2147005555 groups=["enemy"]]
 collision_layer = 4
 collision_mask = 3
 motion_mode = 1
@@ -26,6 +26,8 @@ health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." unique_id=1397975947 instance=ExtResource("4_tl8x4")]
 base_max_health = 20.0
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
 [editable path="Hitbox"]
 [editable path="Hurtbox"]

@@ -10,4 +10,4 @@ func receive_damage(damage: int) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is Hitbox:
-		print('DEBUG: Hurbox detects Hitbox')
+		print('DEBUG: Hurtbox detects Hitbox')

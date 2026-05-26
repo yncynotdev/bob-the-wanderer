@@ -2,11 +2,19 @@ class_name Player
 extends CharacterBody2D
 
 @export var status: Status
+
 @onready var health_component = $HealthComponent
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+@onready var knockback_duration: Timer = $KnockbackDuration
+@export var knockback_time: float = 2.0
+@export var knockback_power: float = 500.0
+
 @onready var weapon_placeholder: Node2D = %WeaponPlaceholder
 @onready var weapon: WeaponComponent = weapon_placeholder.get_child(0)
+
+@onready var enemy = get_tree().get_first_node_in_group("enemy")
 
 var health: float
 var attack: float
@@ -26,6 +34,8 @@ enum State {
 var is_attacked: bool = false
 var is_attacked_pressed: bool = false
 
+var is_hit: bool = false
+
 var current_state = State.MOVE
 
 
@@ -34,10 +44,11 @@ func change_state(new_state: State) -> void:
 		return
 
 	current_state = new_state
-	print('DEBUG: State ', current_state)
 
 
 func _ready() -> void:
+	add_to_group('player')
+
 	if !weapon:
 		return
 	else:
@@ -45,16 +56,12 @@ func _ready() -> void:
 		weapon.connect('on_weapon_stop_attacked', stop_attacking)
 
 	health = health_component.health
-	print('DEBUG: Player health ', health)
 
 	attack = status.current_attack
-	print('DEBUG: Player attack ', attack)
 
 	defense = status.current_defense
-	print('DEBUG: Player defense ', defense)
 
 	speed = status.current_speed
-	print('DEBUG: Player speed ', speed)
 
 
 func _physics_process(_delta: float) -> void:
@@ -66,11 +73,9 @@ func _physics_process(_delta: float) -> void:
 		State.ATTACK:
 			state_attack()
 		State.HIT:
-			pass
+			state_hit()
 		State.DEAD:
 			pass
-
-	move_and_slide()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -87,8 +92,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func idle() -> void:
 	velocity = Vector2.ZERO
+
+	move_and_slide()
+
 	if is_attacked:
 		change_state(State.ATTACK)
+
+	if is_hit:
+		change_state(State.HIT)
 
 
 func move_animation() -> void:
@@ -113,10 +124,16 @@ func move_animation() -> void:
 
 func state_move() -> void:
 	move_animation()
+
 	velocity = direction * speed
+
+	move_and_slide()
 
 	if is_attacked:
 		change_state(State.ATTACK)
+
+	if is_hit:
+		change_state(State.HIT)
 
 
 func attack_animation() -> void:
@@ -141,6 +158,9 @@ func state_attack() -> void:
 	if !is_attacked:
 		change_state(State.MOVE)
 
+	if is_hit:
+		change_state(State.HIT)
+
 
 func start_attacking() -> void:
 	is_attacked = true
@@ -150,3 +170,27 @@ func start_attacking() -> void:
 func stop_attacking() -> void:
 	is_attacked = false
 	is_attacked_pressed = false
+
+
+func state_hit() -> void:
+	if !is_hit:
+		change_state(State.MOVE)
+
+
+func knockback() -> void:
+	var knockback_dir: Vector2 = -velocity.normalized() * knockback_power
+	velocity = knockback_dir
+
+	move_and_slide()
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area is Hitbox:
+		knockback_duration.start(knockback_time)
+		knockback()
+
+		is_hit = true
+
+
+func _on_knockback_duration_timeout() -> void:
+	is_hit = false

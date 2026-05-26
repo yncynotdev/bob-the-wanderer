@@ -9,3 +9,4 @@ extends ItemResource
 @export var weapon_hitbox_size: Vector2
 @export var weapon_attack_duration: float = 1.0
 @export var weapon_cooldown_duration: float = 1.2
+@export var weapon_knockback_power: float = 500.0

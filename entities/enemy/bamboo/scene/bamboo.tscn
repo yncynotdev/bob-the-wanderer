@@ -10,14 +10,15 @@ radius = 7.0
 height = 18.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnpk2"]
-size = Vector2(16, 17)
+size = Vector2(18, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwxui"]
-size = Vector2(18, 19)
+size = Vector2(18, 20)
 
 [node name="Bamboo" unique_id=2147005555 instance=ExtResource("1_yc7j7")]
 script = ExtResource("2_386nr")
 status = ExtResource("3_y8nne")
+knockback_power = 1000.0
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=249710695]
 sprite_frames = ExtResource("4_y8nne")
@@ -34,14 +35,13 @@ visible = false
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=864603550]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_lnpk2")
 
 [node name="Hurtbox" parent="." index="3" unique_id=1558196444]
+visible = false
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0" unique_id=864603550]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_cwxui")
 
 [editable path="Hitbox"]

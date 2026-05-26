@@ -49,8 +49,6 @@ func init_weapon() -> void:
 	hitbox.set_attacker_status(actor.status)
 	hitbox.set_weapon_damage(weapon_res.damage)
 
-	print('DEBUG: Player status on weapon component - ', actor.status)
-
 
 func on_weapon_attack() -> void:
 	on_weapon_attacked.emit()

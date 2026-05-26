@@ -24,6 +24,11 @@ folder_colors={
 "res://shared/": "purple"
 }
 
+[global_group]
+
+player=""
+enemy=""
+
 [input]
 
 left={
