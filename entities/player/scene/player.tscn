@@ -271,7 +271,7 @@ motion_mode = 1
 script = ExtResource("1_8xc6n")
 status = SubResource("Resource_33t0o")
 knockback_time = 1.0
-knockback_power = 1000.0
+knockback_power = 5000.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=927110348]
 sprite_frames = SubResource("SpriteFrames_apncy")

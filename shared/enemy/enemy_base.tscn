@@ -10,6 +10,7 @@ collision_layer = 4
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_dg24u")
+knockback_power = 5000.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=249710695]
 
