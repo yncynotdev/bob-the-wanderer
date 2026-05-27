@@ -3,8 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://cuy7s7elijy6v" path="res://entities/player/scene/player.tscn" id="1_72lju"]
 [ext_resource type="Script" uid="uid://dymhou75kqu68" path="res://shared/status/status.gd" id="2_ny0t1"]
 [ext_resource type="PackedScene" uid="uid://crjts6djm3w2a" path="res://entities/enemy/bamboo/scene/bamboo.tscn" id="3_r4e4k"]
+[ext_resource type="PackedScene" uid="uid://bdvoya4fnogn" path="res://shared/audio/level_bgm.tscn" id="4_r4e4k"]
+[ext_resource type="AudioStream" uid="uid://cjpinkos86e5q" path="res://assets/music/2 - The Cave.ogg" id="5_pnvjf"]
 
-[sub_resource type="Resource" id="Resource_ny0t1"]
+[sub_resource type="Resource" id="Resource_r4e4k"]
 resource_local_to_scene = true
 script = ExtResource("2_ny0t1")
 metadata/_custom_type_script = "uid://dymhou75kqu68"
@@ -15,7 +17,10 @@ metadata/_custom_type_script = "uid://dymhou75kqu68"
 zoom = Vector2(2, 2)
 
 [node name="Player" parent="." unique_id=303148737 instance=ExtResource("1_72lju")]
-status = SubResource("Resource_ny0t1")
+status = SubResource("Resource_r4e4k")
 
 [node name="Bamboo" parent="." unique_id=1680700193 instance=ExtResource("3_r4e4k")]
 position = Vector2(32, 42)
+
+[node name="MainBGM" parent="." unique_id=1664309393 instance=ExtResource("4_r4e4k")]
+stream = ExtResource("5_pnvjf")

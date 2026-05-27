@@ -7,6 +7,9 @@ signal on_weapon_stop_attacked
 @export var weapon_res: WeaponResource
 @export var actor: CharacterBody2D
 
+@onready var sfx: AudioStreamPlayer2D = $SFX
+@onready var impact_sfx: AudioStreamPlayer2D = $ImpactSFX
+
 @onready var hitbox = $Hitbox
 @onready var hitbox_collision = $Hitbox/CollisionShape2D
 
@@ -49,6 +52,9 @@ func init_weapon() -> void:
 	hitbox.set_attacker_status(actor.status)
 	hitbox.set_weapon_damage(weapon_res.damage)
 
+	sfx.stream = weapon_res.weapon_sfx
+	impact_sfx.stream = weapon_res.weapon_impact_sfx
+
 
 func on_weapon_attack() -> void:
 	on_weapon_attacked.emit()
@@ -59,6 +65,8 @@ func on_weapon_attack() -> void:
 
 	attack_timer.start(weapon_res.weapon_attack_duration)
 	attack_cooldown_timer.start(weapon_res.weapon_cooldown_duration + weapon_res.weapon_attack_duration)
+
+	sfx.play()
 
 
 func calculate_collision() -> void:
@@ -86,3 +94,8 @@ func _on_attack_timer_timeout() -> void:
 func _on_attack_cooldown_timer_timeout() -> void:
 	is_attacked = false
 	is_attack_cooldown = false
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area is Hurtbox:
+		impact_sfx.play()

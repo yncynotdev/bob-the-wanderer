@@ -9,7 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://dj2g3gptrth73" path="res://shared/hurtbox/hurtbox.tscn" id="7_04dpg"]
 [ext_resource type="PackedScene" uid="uid://d0bfarnofv346" path="res://shared/weapon/weapon_component.tscn" id="8_w1ewg"]
 [ext_resource type="Resource" uid="uid://duxjivlp3xef0" path="res://items/weapon/sword/sword.tres" id="9_llfb5"]
+[ext_resource type="PackedScene" uid="uid://bky6aatapiu26" path="res://shared/audio/sfx/hurt_sfx.tscn" id="11_qptj5"]
+[ext_resource type="PackedScene" uid="uid://5w5xtx5aok7g" path="res://shared/audio/sfx/move_sfx.tscn" id="11_vwqy1"]
 [ext_resource type="PackedScene" uid="uid://3cdnx1374mva" path="res://shared/health/health_component.tscn" id="12_33t0o"]
+[ext_resource type="AudioStream" uid="uid://q8oiysm6u7fw" path="res://assets/sfx/hit_impact/Hit3.wav" id="12_vwqy1"]
 
 [sub_resource type="Resource" id="Resource_33t0o"]
 script = ExtResource("2_8ivne")
@@ -307,6 +310,11 @@ one_shot = true
 
 [node name="HealthComponent" parent="." unique_id=1397975947 instance=ExtResource("12_33t0o")]
 base_max_health = 99.0
+
+[node name="MoveSFX" parent="." unique_id=1418120964 instance=ExtResource("11_vwqy1")]
+
+[node name="HurtSFX" parent="." unique_id=79005569 instance=ExtResource("11_qptj5")]
+stream = ExtResource("12_vwqy1")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="AttackDuration" to="." method="_on_attack_duration_timeout"]

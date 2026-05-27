@@ -10,6 +10,9 @@ extends CharacterBody2D
 @onready var hitbox = $Hitbox
 
 @onready var sprite = $AnimatedSprite2D
+@onready var hit_fx = $HitFX
+
+@onready var hurt_sfx: AudioStreamPlayer2D = $HurtSFX
 
 @onready var player = get_tree().get_first_node_in_group("player")
 
@@ -87,3 +90,12 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area is Hitbox:
 		knockback()
 		is_hit = true
+		hit_fx.play('cut')
+		hurt_sfx.play()
+		hit_fx.visible = true
+
+
+func _on_hit_fx_animation_finished() -> void:
+	if hit_fx.animation == 'cut':
+		# hit_fx.visible = false
+		hit_fx.set_deferred("visible", false)

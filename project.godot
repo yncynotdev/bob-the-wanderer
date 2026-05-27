@@ -15,6 +15,10 @@ run/main_scene="uid://c2756u71t8ieo"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://brr8rxa6r86ft"
+
 [display]
 
 window/size/window_width_override=1920
@@ -27,6 +31,7 @@ window/stretch/scale_mode="integer"
 folder_colors={
 "res://assets/": "red",
 "res://entities/": "green",
+"res://items/": "orange",
 "res://levels/": "yellow",
 "res://shared/": "purple"
 }

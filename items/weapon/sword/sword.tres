@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="WeaponResource" format=3 uid="uid://duxjivlp3xef0"]
 
 [ext_resource type="Script" uid="uid://bhqtaplme3vkd" path="res://shared/weapon/weapon_res.gd" id="1_0v4jw"]
+[ext_resource type="AudioStream" uid="uid://d14ei4id03hvx" path="res://assets/sfx/hit_impact/Impact.wav" id="2_7sodh"]
 [ext_resource type="Texture2D" uid="uid://dap0i7v22gllb" path="res://items/weapon/sword/SpriteInHand.png" id="2_r6r5k"]
+[ext_resource type="AudioStream" uid="uid://bfctyh52vg3fj" path="res://assets/sfx/slash/Slash4.wav" id="3_wj4mu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2t7h"]
 
@@ -13,4 +15,6 @@ weapon_position = Vector2(0, 5)
 weapon_hitbox_shape = SubResource("RectangleShape2D_a2t7h")
 weapon_hitbox_size = Vector2(8, 13)
 weapon_attack_duration = 0.5
+weapon_sfx = ExtResource("3_wj4mu")
+weapon_impact_sfx = ExtResource("2_7sodh")
 metadata/_custom_type_script = "uid://bhqtaplme3vkd"

@@ -7,6 +7,8 @@ extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+@onready var hurt_sfx: AudioStreamPlayer2D = $HurtSFX
+
 @onready var knockback_duration: Timer = $KnockbackDuration
 @export var knockback_time: float = 2.0
 @export var knockback_power: float = 500.0
@@ -189,6 +191,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		knockback_duration.start(knockback_time)
 		knockback()
 
+		hurt_sfx.play()
 		is_hit = true
 
 

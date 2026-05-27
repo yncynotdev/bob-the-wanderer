@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bky6aatapiu26"]
+
+[ext_resource type="AudioStream" uid="uid://bqbo3476r8jcf" path="res://assets/sfx/hit_impact/Hit1.wav" id="1_vy5fb"]
+
+[node name="HurtSFX" type="AudioStreamPlayer2D" unique_id=79005569]
+stream = ExtResource("1_vy5fb")
+bus = &"SFX"
