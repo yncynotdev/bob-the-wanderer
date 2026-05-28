@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cdmrkn4ro72q3"]
+
+[ext_resource type="AudioStream" uid="uid://cjpinkos86e5q" path="res://assets/music/2 - The Cave.ogg" id="1_7qol3"]
+
+[node name="LevelBGM" type="AudioStreamPlayer" unique_id=1664309393]
+stream = ExtResource("1_7qol3")
+autoplay = true
+bus = &"Music"
