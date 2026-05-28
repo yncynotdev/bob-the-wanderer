@@ -31,9 +31,11 @@ window/stretch/scale_mode="integer"
 folder_colors={
 "res://assets/": "red",
 "res://entities/": "green",
+"res://gui/": "teal",
 "res://items/": "orange",
 "res://levels/": "yellow",
-"res://shared/": "purple"
+"res://shared/": "purple",
+"res://ui/": "teal"
 }
 
 [global_group]

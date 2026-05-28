@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://sdi5w4dhrcsb"]
+
+[ext_resource type="PackedScene" uid="uid://cmpreukrd2pk0" path="res://ui/rich_text_label/h1_label.tscn" id="1_xk52o"]
+[ext_resource type="PackedScene" uid="uid://bmns7ceiduu55" path="res://ui/button/styled_button.tscn" id="2_at0em"]
+
+[node name="MainMenu" type="Control" unique_id=1155693776]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1071241209]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=926017916]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -23.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer" unique_id=46540389]
+layout_mode = 2
+theme_override_constants/margin_bottom = 15
+
+[node name="H1Label" parent="Panel/VBoxContainer/MarginContainer" unique_id=1277626003 instance=ExtResource("1_xk52o")]
+layout_mode = 2
+
+[node name="StartButton" parent="Panel/VBoxContainer" unique_id=1043581098 instance=ExtResource("2_at0em")]
+layout_mode = 2
+text = "Start"
+
+[node name="SettingsButton" parent="Panel/VBoxContainer" unique_id=1298804195 instance=ExtResource("2_at0em")]
+layout_mode = 2
+text = "Settings"
+
+[node name="Button" parent="Panel/VBoxContainer" unique_id=1645134697 instance=ExtResource("2_at0em")]
+layout_mode = 2
+text = "Exit"

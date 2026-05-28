@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bkthi8b546fkv"]
+
+[node name="PLabel" type="RichTextLabel" unique_id=1277626003]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 46.0
+grow_horizontal = 2
+bbcode_enabled = true
+text = "[center][font_size=32][font=assets/fonts/boldpixels/boldpixels.ttf]Lorem Ipsum"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
