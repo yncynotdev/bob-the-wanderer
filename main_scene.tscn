@@ -2,10 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://sdi5w4dhrcsb" path="res://gui/menus/main/main_menu.tscn" id="1_0f027"]
 [ext_resource type="PackedScene" uid="uid://birbplwmoh3je" path="res://gui/menus/settings/settings_menu.tscn" id="2_2c62f"]
+[ext_resource type="PackedScene" uid="uid://c2756u71t8ieo" path="res://levels/test.tscn" id="2_gyfs4"]
 
 [node name="MainScene" type="Node" unique_id=507037693]
 
 [node name="MainMenu" parent="." unique_id=1155693776 node_paths=PackedStringArray("settings_menu") instance=ExtResource("1_0f027")]
+starting_scene = ExtResource("2_gyfs4")
 settings_menu = NodePath("../SettingsMenu")
 
 [node name="SettingsMenu" parent="." unique_id=2086893433 node_paths=PackedStringArray("main_menu") instance=ExtResource("2_2c62f")]
