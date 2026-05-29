@@ -52,3 +52,7 @@ text = "Settings"
 [node name="ExitButton" parent="Panel/VBoxContainer" unique_id=1645134697 instance=ExtResource("2_at0em")]
 layout_mode = 2
 text = "Exit"
+
+[connection signal="pressed" from="Panel/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

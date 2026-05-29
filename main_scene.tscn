@@ -5,7 +5,9 @@
 
 [node name="MainScene" type="Node" unique_id=507037693]
 
-[node name="MainMenu" parent="." unique_id=1155693776 instance=ExtResource("1_0f027")]
+[node name="MainMenu" parent="." unique_id=1155693776 node_paths=PackedStringArray("settings_menu") instance=ExtResource("1_0f027")]
+settings_menu = NodePath("../SettingsMenu")
 
-[node name="SettingsMenu" parent="." unique_id=2086893433 instance=ExtResource("2_2c62f")]
+[node name="SettingsMenu" parent="." unique_id=2086893433 node_paths=PackedStringArray("main_menu") instance=ExtResource("2_2c62f")]
 visible = false
+main_menu = NodePath("../MainMenu")
