@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cmpreukrd2pk0"]
+
+[ext_resource type="LabelSettings" uid="uid://dnyvq0li377vd" path="res://ui/label/h1_label.tres" id="1_8ifpg"]
+
+[node name="StyledLabel" type="Label" unique_id=1366229181]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Lorem Ipsum"
+label_settings = ExtResource("1_8ifpg")

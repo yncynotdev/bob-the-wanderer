@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://sdi5w4dhrcsb"]
 
-[ext_resource type="PackedScene" uid="uid://cmpreukrd2pk0" path="res://ui/rich_text_label/h1_label.tscn" id="1_xk52o"]
+[ext_resource type="Script" uid="uid://b3wl0jgg6xkpt" path="res://gui/menus/main/main_menu.gd" id="1_uucwb"]
+[ext_resource type="PackedScene" uid="uid://cmpreukrd2pk0" path="res://ui/label/styled_label.tscn" id="1_xk52o"]
 [ext_resource type="PackedScene" uid="uid://bmns7ceiduu55" path="res://ui/button/styled_button.tscn" id="2_at0em"]
 
 [node name="MainMenu" type="Control" unique_id=1155693776]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_uucwb")
 
 [node name="Panel" type="Panel" parent="." unique_id=1071241209]
 layout_mode = 1
@@ -34,8 +36,10 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/margin_bottom = 15
 
-[node name="H1Label" parent="Panel/VBoxContainer/MarginContainer" unique_id=1277626003 instance=ExtResource("1_xk52o")]
+[node name="TitleLabel" parent="Panel/VBoxContainer/MarginContainer" unique_id=1277626003 instance=ExtResource("1_xk52o")]
 layout_mode = 2
+text = "John the Wanderer"
+horizontal_alignment = 1
 
 [node name="StartButton" parent="Panel/VBoxContainer" unique_id=1043581098 instance=ExtResource("2_at0em")]
 layout_mode = 2
@@ -45,6 +49,6 @@ text = "Start"
 layout_mode = 2
 text = "Settings"
 
-[node name="Button" parent="Panel/VBoxContainer" unique_id=1645134697 instance=ExtResource("2_at0em")]
+[node name="ExitButton" parent="Panel/VBoxContainer" unique_id=1645134697 instance=ExtResource("2_at0em")]
 layout_mode = 2
 text = "Exit"

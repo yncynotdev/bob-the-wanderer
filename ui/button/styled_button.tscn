@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://pj34wqmwiprc" path="res://assets/fonts/boldpixels/boldpixels.ttf" id="1_0a8h8"]
 
-[node name="Button" type="Button" unique_id=1043581098]
+[node name="StyledButton" type="Button" unique_id=1043581098]
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_0a8h8")

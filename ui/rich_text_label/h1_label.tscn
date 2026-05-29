@@ -1,12 +1,13 @@
-[gd_scene format=3 uid="uid://cmpreukrd2pk0"]
+[gd_scene format=3 uid="uid://b5en26xefiagu"]
 
-[node name="H1Label" type="RichTextLabel" unique_id=1277626003]
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 46.0
-grow_horizontal = 2
-bbcode_enabled = true
-text = "[center][font_size=64][font=assets/fonts/boldpixels/boldpixels.ttf]Lorem Ipsum"
-fit_content = true
-horizontal_alignment = 1
-vertical_alignment = 1
+[ext_resource type="FontFile" uid="uid://pj34wqmwiprc" path="res://assets/fonts/boldpixels/boldpixels.ttf" id="1_u7inr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8mwkd"]
+font = ExtResource("1_u7inr")
+font_size = 64
+
+[node name="StyledLabel" type="Label" unique_id=1366229181]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Lorem Ipsum"
+label_settings = SubResource("LabelSettings_8mwkd")

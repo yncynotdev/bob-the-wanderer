@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bgsej6n56bcvo"]
+
+[node name="VolumeSlider" type="HSlider" unique_id=1213378815]
+offset_right = 8.0
+offset_bottom = 16.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
