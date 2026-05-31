@@ -34,18 +34,21 @@ extends CharacterBody2D
 
 var direction: Vector2
 
+var movement_delta: float
+
 var health: float
 
 enum State {
 	IDLE,
-	MOVE,
+	SCATTER,
+	CHASE,
 	HIT,
 	DEAD,
 }
 
 var is_hit: bool = false
 
-var current_state = State.MOVE
+var current_state = State.CHASE
 
 
 func change_state(new_state: State) -> void:
@@ -59,12 +62,12 @@ func _ready() -> void:
 	init_enemy()
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	match current_state:
 		State.IDLE:
 			state_idle()
-		State.MOVE:
-			state_move()
+		State.CHASE:
+			state_chase(delta)
 		State.HIT:
 			state_hit()
 		State.DEAD:
@@ -82,30 +85,52 @@ func init_enemy() -> void:
 		health = health_component.health
 
 
+func set_movement_target(movement_target: Vector2) -> void:
+	navigation_agent_2d.set_target_position(movement_target)
+
+
 func state_idle() -> void:
 	velocity = Vector2.ZERO
 
 	animation_direction('idle')
 
+	change_state(State.CHASE)
+
 	move_and_slide()
 
 	if is_hit:
 		change_state(State.HIT)
 
 
-func state_move() -> void:
-	if !navigation_agent_2d.is_target_reached():
-		direction = to_local(navigation_agent_2d.get_next_path_position()).normalized()
-
-	velocity = direction * status.current_speed
-	navigation_agent_2d.target_position = player.global_position
-
+func state_chase(delta: float) -> void:
 	animation_direction("move")
 
-	move_and_slide()
+	set_movement_target(player.global_position)
+
+	navigation_logic(delta)
+
+	# if navigation_agent_2d.avoidance_enabled:
+	# 	navigation_agent_2d.set_velocity_forced(direction)
+	# else:
+	# 	_on_velocity_computed(direction)
 
 	if is_hit:
 		change_state(State.HIT)
+
+
+func navigation_logic(delta: float) -> void:
+	if NavigationServer2D.map_get_iteration_id(navigation_agent_2d.get_navigation_map()) == 0:
+		return
+
+	if navigation_agent_2d.is_navigation_finished():
+		return
+
+	var next_path_position: Vector2 = navigation_agent_2d.get_next_path_position()
+	direction = global_position.direction_to(next_path_position)
+
+	if navigation_agent_2d.is_target_reached() == false:
+		velocity = velocity.lerp(direction * status.current_speed, delta)
+		move_and_slide()
 
 
 func state_hit() -> void:

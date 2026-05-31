@@ -1,15 +1,23 @@
 [gd_scene format=3 uid="uid://cup0j3te6wi1h"]
 
 [ext_resource type="PackedScene" uid="uid://b2ndn0ybwmrf4" path="res://shared/enemy/enemy_base.tscn" id="1_lxco4"]
+[ext_resource type="Script" uid="uid://4tf0c1giew5j" path="res://entities/enemy/key_goblin/key_goblin.gd" id="2_gdi15"]
 [ext_resource type="SpriteFrames" uid="uid://mrfmiqw634sn" path="res://entities/enemy/key_goblin/key_goblin_sprite_frame.tres" id="2_n5a2e"]
 [ext_resource type="Resource" uid="uid://c85qt74d5n4x6" path="res://entities/enemy/key_goblin/key_goblin.tres" id="2_ucnjc"]
 [ext_resource type="Script" uid="uid://c7ifvqyitooux" path="res://shared/loot/loot.gd" id="3_gmvw5"]
 [ext_resource type="PackedScene" uid="uid://cnqbbnfw08j10" path="res://pick_up/key/key.tscn" id="3_yn5sa"]
+[ext_resource type="Shader" uid="uid://dsromrqqfirbp" path="res://shared/fx/flash/flash.gdshader" id="6_vdbfh"]
 
 [sub_resource type="Resource" id="Resource_yn5sa"]
 script = ExtResource("3_gmvw5")
 loot_scene = ExtResource("3_yn5sa")
 metadata/_custom_type_script = "uid://c7ifvqyitooux"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sy18s"]
+resource_local_to_scene = true
+shader = ExtResource("6_vdbfh")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_pct = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n5a2e"]
 radius = 4.0
@@ -22,10 +30,12 @@ size = Vector2(12, 11)
 size = Vector2(16, 13)
 
 [node name="KeyGoblin" unique_id=2147005555 instance=ExtResource("1_lxco4")]
+script = ExtResource("2_gdi15")
 status = ExtResource("2_ucnjc")
 loot = SubResource("Resource_yn5sa")
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=249710695]
+material = SubResource("ShaderMaterial_sy18s")
 sprite_frames = ExtResource("2_n5a2e")
 animation = &"idle_down"
 autoplay = "idle_down"
