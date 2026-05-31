@@ -28,6 +28,8 @@ extends CharacterBody2D
 @onready var hurt_duration: Timer = $HurtDuration
 @export var hurt_duration_time: float = 2.0
 
+@onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
+
 @onready var player = get_tree().get_first_node_in_group("player")
 
 var direction: Vector2
@@ -43,7 +45,7 @@ enum State {
 
 var is_hit: bool = false
 
-var current_state = State.IDLE
+var current_state = State.MOVE
 
 
 func change_state(new_state: State) -> void:
@@ -92,9 +94,12 @@ func state_idle() -> void:
 
 
 func state_move() -> void:
-	direction = Vector2.LEFT
+	if !navigation_agent_2d.is_target_reached():
+		direction = to_local(navigation_agent_2d.get_next_path_position()).normalized()
 
 	velocity = direction * status.current_speed
+	navigation_agent_2d.target_position = player.global_position
+
 	animation_direction("move")
 
 	move_and_slide()

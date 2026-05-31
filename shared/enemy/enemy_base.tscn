@@ -77,7 +77,7 @@ _data = {
 
 [node name="EnemyBase" type="CharacterBody2D" unique_id=2147005555 groups=["enemy"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_dg24u")
 knockback_power = 5000.0
@@ -101,6 +101,13 @@ collision_mask = 32
 collision_layer = 64
 collision_mask = 8
 health_component = NodePath("../HealthComponent")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1617454901]
+path_desired_distance = 4.0
+target_desired_distance = 4.0
+path_postprocessing = 1
+avoidance_enabled = true
+debug_enabled = true
 
 [node name="HealthComponent" parent="." unique_id=1397975947 instance=ExtResource("4_tl8x4")]
 base_max_health = 20.0
