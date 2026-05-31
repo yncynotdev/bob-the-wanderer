@@ -6,4 +6,6 @@
 [node name="PickUp" unique_id=1935515335 instance=ExtResource("1_as7my")]
 script = ExtResource("2_m3y85")
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=1825625135]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=1258906281]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1" unique_id=1825625135]

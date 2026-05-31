@@ -1,6 +1,7 @@
 [gd_resource type="TileSet" format=3 uid="uid://f5fxprfqcov0"]
 
-[ext_resource type="Texture2D" uid="uid://c6sgnlqt2nhp6" path="res://assets/tilemaps/tileset_white.png" id="1_dqxcl"]
+[ext_resource type="Texture2D" uid="uid://bmkxyj46bgx0s" path="res://assets/tilemaps/tileset_blue.png" id="2_db0ft"]
+[ext_resource type="PackedScene" uid="uid://c3p0un3hmpnix" path="res://pick_up/orbs/orbs.tscn" id="2_jrkt3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_008tl"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -15,7 +16,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qhvcx"]
-texture = ExtResource("1_dqxcl")
+texture = ExtResource("2_db0ft")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -96,8 +97,13 @@ texture = ExtResource("1_dqxcl")
 7:4/0 = 0
 7:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_008tl")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_db0ft"]
+resource_name = "orbs"
+scenes/1/scene = ExtResource("2_jrkt3")
+
 [resource]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 6
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_qhvcx")
+sources/3 = SubResource("TileSetScenesCollectionSource_db0ft")
