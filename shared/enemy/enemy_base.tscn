@@ -108,6 +108,8 @@ target_desired_distance = 4.0
 path_postprocessing = 1
 avoidance_enabled = true
 debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0, 0.21960784, 1)
 
 [node name="HealthComponent" parent="." unique_id=1397975947 instance=ExtResource("4_tl8x4")]
 base_max_health = 20.0

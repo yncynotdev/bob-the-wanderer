@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://birbplwmoh3je"]
 
 [ext_resource type="Script" uid="uid://dp3qbomdthty0" path="res://gui/menus/settings/settings_menu.gd" id="1_qo187"]
-[ext_resource type="PackedScene" uid="uid://b5en26xefiagu" path="res://ui/rich_text_label/h1_label.tscn" id="2_nndmh"]
 [ext_resource type="LabelSettings" uid="uid://vwvmgcjdhfaw" path="res://ui/label/h2_label.tres" id="3_3hg5t"]
 [ext_resource type="PackedScene" uid="uid://cmpreukrd2pk0" path="res://ui/label/styled_label.tscn" id="3_8moom"]
 [ext_resource type="PackedScene" uid="uid://bgsej6n56bcvo" path="res://ui/slider/volume/volume_slider.tscn" id="4_8aiqf"]
@@ -40,7 +39,7 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 32
 
-[node name="TitleLabel" parent="Panel/MarginContainer/VBoxContainer" unique_id=1277626003 instance=ExtResource("2_nndmh")]
+[node name="StyledLabel" parent="Panel/MarginContainer/VBoxContainer" unique_id=1366229181 instance=ExtResource("3_8moom")]
 layout_mode = 2
 text = "Settings"
 label_settings = ExtResource("3_3hg5t")
@@ -52,7 +51,7 @@ theme_override_constants/h_separation = 32
 theme_override_constants/v_separation = 16
 columns = 2
 
-[node name="MasterLabel" parent="Panel/MarginContainer/VBoxContainer/GridContainer" unique_id=1366229181 instance=ExtResource("3_8moom")]
+[node name="MasterLabel" parent="Panel/MarginContainer/VBoxContainer/GridContainer" unique_id=381291578 instance=ExtResource("3_8moom")]
 layout_mode = 2
 text = "Master"
 label_settings = ExtResource("5_w864d")
