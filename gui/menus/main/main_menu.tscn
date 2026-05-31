@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://b3wl0jgg6xkpt" path="res://gui/menus/main/main_menu.gd" id="1_uucwb"]
 [ext_resource type="PackedScene" uid="uid://cmpreukrd2pk0" path="res://ui/label/styled_label.tscn" id="1_xk52o"]
 [ext_resource type="PackedScene" uid="uid://bmns7ceiduu55" path="res://ui/button/styled_button.tscn" id="2_at0em"]
+[ext_resource type="LabelSettings" uid="uid://cwlismoq3s6fj" path="res://ui/label/p_label.tres" id="4_68v2n"]
+[ext_resource type="Texture2D" uid="uid://85ec72a33ria" path="res://assets/guthib.png" id="5_6l0nq"]
 
 [node name="MainMenu" type="Control" unique_id=1155693776]
 layout_mode = 3
@@ -53,8 +55,38 @@ text = "Settings"
 layout_mode = 2
 text = "Exit"
 
+[node name="AcknowledgementLabel" parent="." unique_id=1366229181 instance=ExtResource("1_xk52o")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -24.0
+offset_right = 160.0
+offset_bottom = -8.0
+grow_vertical = 0
+text = "SFX: Ninja Adventure"
+label_settings = ExtResource("4_68v2n")
+vertical_alignment = 2
+
+[node name="GitHubButton" type="Button" parent="." unique_id=1724276629]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+icon = ExtResource("5_6l0nq")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1925957743]
 
 [connection signal="pressed" from="Panel/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="GitHubButton" to="." method="_on_git_hub_button_pressed"]

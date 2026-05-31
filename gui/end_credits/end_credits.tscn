@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://ctpmbffo32g3w"]
+
+[ext_resource type="Script" uid="uid://cbleg3xcjwe3y" path="res://gui/end_credits/end_credits.gd" id="1_7dnka"]
+[ext_resource type="PackedScene" uid="uid://cmpreukrd2pk0" path="res://ui/label/styled_label.tscn" id="1_rdivx"]
+[ext_resource type="LabelSettings" uid="uid://cwlismoq3s6fj" path="res://ui/label/p_label.tres" id="2_owbt4"]
+[ext_resource type="PackedScene" uid="uid://bmns7ceiduu55" path="res://ui/button/styled_button.tscn" id="3_owbt4"]
+
+[node name="EndCredits" type="Control" unique_id=362313991]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7dnka")
+
+[node name="Panel" type="Panel" parent="." unique_id=635866897]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=756826728]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="TitleLabel" parent="Panel/VBoxContainer" unique_id=1366229181 instance=ExtResource("1_rdivx")]
+layout_mode = 2
+text = "Fin"
+horizontal_alignment = 1
+
+[node name="ParagraphLabel" parent="Panel/VBoxContainer" unique_id=2140220954 instance=ExtResource("1_rdivx")]
+layout_mode = 2
+text = "Greetings Hyper Game Dev and community!
+Thank you for this opportunity, saddly
+I didn't utilized the game jam duration
+due to my surtured on my pinky. I
+prioritized recovery first. I just
+made this lik 6 days. Thanks! 
+"
+label_settings = ExtResource("2_owbt4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" parent="Panel/VBoxContainer" unique_id=1043581098 instance=ExtResource("3_owbt4")]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="Panel/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

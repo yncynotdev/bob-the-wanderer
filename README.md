@@ -1,4 +1,4 @@
-# Dash Dash Dungeon
+# Bob the Wanderer
 
 Our entry for [Game-Like Jam 09](https://itch.io/jam/gamelike-jam-009)
 

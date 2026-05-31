@@ -17,3 +17,7 @@ func _on_settings_button_pressed() -> void:
 # TODO: Add a loading scene later
 func _on_start_button_pressed() -> void:
 	get_tree().change_scene_to_packed(starting_scene)
+
+
+func _on_git_hub_button_pressed() -> void:
+	OS.shell_open('http://github.com/yncynotdev')
