@@ -307,11 +307,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5gr5v"]
-radius = 8.0
-height = 18.0
+radius = 6.0
+height = 14.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04dpg"]
-size = Vector2(16, 17)
+size = Vector2(14, 15)
 
 [node name="Player" type="CharacterBody2D" unique_id=303148737 groups=["player"]]
 collision_layer = 2

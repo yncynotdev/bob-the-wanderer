@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bib7ukexey0yg"]
+
+[ext_resource type="PackedScene" uid="uid://b3mt1gpm23wyx" path="res://shared/detectables/area_detectables.tscn" id="1_c0ckk"]
+[ext_resource type="Script" uid="uid://da0lp6a2ecjml" path="res://shared/zones/zones.gd" id="2_72ylt"]
+[ext_resource type="Texture2D" uid="uid://upsblwvtwdpr" path="res://assets/door.png" id="2_si62v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72ylt"]
+
+[node name="Zones" unique_id=1935515335 instance=ExtResource("1_c0ckk")]
+collision_mask = 2
+script = ExtResource("2_72ylt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=802995806]
+texture = ExtResource("2_si62v")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=864603550]
+shape = SubResource("RectangleShape2D_72ylt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

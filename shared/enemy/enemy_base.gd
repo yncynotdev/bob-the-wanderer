@@ -120,7 +120,8 @@ func state_dead() -> void:
 
 
 func instantiate_loot() -> void:
-	print('DEBUG: I spew the loot')
+	if !loot.loot_scene:
+		return
 	var _loot = loot.loot_scene.instantiate()
 	self.add_child(_loot)
 
