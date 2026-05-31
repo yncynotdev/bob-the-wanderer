@@ -36,6 +36,7 @@ folder_colors={
 "res://gui/": "teal",
 "res://items/": "orange",
 "res://levels/": "yellow",
+"res://pick_up/": "yellow",
 "res://shared/": "purple",
 "res://ui/": "teal"
 }

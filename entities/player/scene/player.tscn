@@ -13,6 +13,7 @@
 
 [sub_resource type="Resource" id="Resource_33t0o"]
 script = ExtResource("2_8ivne")
+base_max_attack = 99.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qptj5"]
 atlas = ExtResource("3_llfb5")

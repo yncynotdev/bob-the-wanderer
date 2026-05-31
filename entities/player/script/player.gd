@@ -20,6 +20,8 @@ extends CharacterBody2D
 
 @onready var enemy = get_tree().get_first_node_in_group("enemy")
 
+var key: int = 0
+
 var health: float
 var attack: float
 var defense: float

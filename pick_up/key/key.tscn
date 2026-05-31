@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cnqbbnfw08j10"]
+
+[ext_resource type="PackedScene" uid="uid://ctqu6ls65s26f" path="res://shared/pick_up/pick_up.tscn" id="1_l74bh"]
+[ext_resource type="Texture2D" uid="uid://byv4jlpwgvv87" path="res://pick_up/key/key.png" id="2_836ja"]
+[ext_resource type="Script" uid="uid://biyt1eq4nurda" path="res://pick_up/key/key.gd" id="2_iqpwl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqpwl"]
+size = Vector2(20, 12)
+
+[node name="Key" unique_id=1935515335 instance=ExtResource("1_l74bh")]
+collision_mask = 2
+script = ExtResource("2_iqpwl")
+
+[node name="Sprite2D" parent="." index="0" unique_id=1825625135]
+texture = ExtResource("2_836ja")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=864603550]
+shape = SubResource("RectangleShape2D_iqpwl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

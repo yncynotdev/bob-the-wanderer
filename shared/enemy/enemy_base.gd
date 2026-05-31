@@ -3,12 +3,17 @@ extends CharacterBody2D
 
 @export var status: Status
 
+@export var loot: Loot
+
 @export var can_knockback: bool = true
 @export var knockback_power: float = 500.0
 
 @onready var health_component = $HealthComponent
 
+@onready var collision = $CollisionShape2D
+
 @onready var hitbox = $Hitbox
+@onready var hitbox_collision = $Hitbox/CollisionShape2D
 
 @onready var hurtbox_collision = $Hurtbox/CollisionShape2D
 
@@ -31,6 +36,7 @@ enum State {
 	IDLE,
 	MOVE,
 	HIT,
+	DEAD,
 }
 
 var is_hit: bool = false
@@ -57,6 +63,8 @@ func _physics_process(_delta: float) -> void:
 			state_move()
 		State.HIT:
 			state_hit()
+		State.DEAD:
+			state_dead()
 
 
 func init_enemy() -> void:
@@ -65,7 +73,8 @@ func init_enemy() -> void:
 	if !health_component:
 		return
 	else:
-		health_component.connect("health_depleted", queue_free)
+		health_component.connect("health_depleted", change_state.bind(State.DEAD))
+		health_component.connect("health_depleted", call_deferred.bind('instantiate_loot'))
 		health = health_component.health
 
 
@@ -99,7 +108,21 @@ func state_hit() -> void:
 
 	if !is_hit:
 		hurtbox_collision.disabled = false
-		change_state(State.MOVE)
+		change_state(State.IDLE)
+
+
+func state_dead() -> void:
+	sprite.visible = false
+
+	collision.disabled = true
+	hurtbox_collision.disabled = true
+	hitbox_collision.disabled = true
+
+
+func instantiate_loot() -> void:
+	print('DEBUG: I spew the loot')
+	var _loot = loot.loot_scene.instantiate()
+	self.add_child(_loot)
 
 
 func animation_direction(action: String) -> void:

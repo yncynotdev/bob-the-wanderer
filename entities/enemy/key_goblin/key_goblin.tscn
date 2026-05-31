@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cup0j3te6wi1h"]
+
+[ext_resource type="PackedScene" uid="uid://b2ndn0ybwmrf4" path="res://shared/enemy/enemy_base.tscn" id="1_lxco4"]
+[ext_resource type="SpriteFrames" uid="uid://mrfmiqw634sn" path="res://entities/enemy/key_goblin/key_goblin_sprite_frame.tres" id="2_n5a2e"]
+[ext_resource type="Resource" uid="uid://c85qt74d5n4x6" path="res://entities/enemy/key_goblin/key_goblin.tres" id="2_ucnjc"]
+[ext_resource type="Script" uid="uid://c7ifvqyitooux" path="res://shared/loot/loot.gd" id="3_gmvw5"]
+[ext_resource type="PackedScene" uid="uid://cnqbbnfw08j10" path="res://pick_up/key/key.tscn" id="3_yn5sa"]
+
+[sub_resource type="Resource" id="Resource_yn5sa"]
+script = ExtResource("3_gmvw5")
+loot_scene = ExtResource("3_yn5sa")
+metadata/_custom_type_script = "uid://c7ifvqyitooux"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n5a2e"]
+radius = 5.0
+height = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ucnjc"]
+size = Vector2(12, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmvw5"]
+size = Vector2(16, 13)
+
+[node name="KeyGoblin" unique_id=2147005555 instance=ExtResource("1_lxco4")]
+status = ExtResource("2_ucnjc")
+loot = SubResource("Resource_yn5sa")
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=249710695]
+sprite_frames = ExtResource("2_n5a2e")
+animation = &"idle_down"
+autoplay = "idle_down"
+
+[node name="CollisionShape2D" parent="." index="2" unique_id=475166942]
+shape = SubResource("CapsuleShape2D_n5a2e")
+
+[node name="CollisionShape2D" parent="Hitbox" parent_id_path=PackedInt32Array(1935515335) index="0" unique_id=864603550]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_ucnjc")
+
+[node name="CollisionShape2D" parent="Hurtbox" parent_id_path=PackedInt32Array(1558196444) index="0" unique_id=864603550]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_gmvw5")
+
+[editable path="Hitbox"]
+[editable path="Hurtbox"]
