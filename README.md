@@ -1,6 +1,6 @@
 # Bob the Wanderer
 
-Our entry for [Game-Like Jam 09](https://itch.io/jam/gamelike-jam-009)
+My entry for [Game-Like Jam 09](https://itch.io/jam/gamelike-jam-009)
 
 This project uses the [Godot](https://godotengine.org/) game engine.
 

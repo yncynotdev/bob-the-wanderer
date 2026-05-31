@@ -10,7 +10,9 @@ config_version=5
 
 [application]
 
-config/name="Dash Dash Dungeon"
+config/name="Bob The Wanderer"
+config/description="My entry for Game-Like Jam 09 
+"
 run/main_scene="uid://xcyjw4r2k2wh"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
