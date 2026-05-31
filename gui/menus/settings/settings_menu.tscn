@@ -79,9 +79,21 @@ label_settings = ExtResource("5_w864d")
 layout_mode = 2
 size_flags_horizontal = 1
 
-[node name="BackButton" parent="Panel/MarginContainer/VBoxContainer" unique_id=1043581098 instance=ExtResource("6_6b5vr")]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1430529223]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+
+[node name="ExitButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1043581098 instance=ExtResource("6_6b5vr")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Exit"
+
+[node name="BackButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=222203304 instance=ExtResource("6_6b5vr")]
 layout_mode = 2
 text = "Back
 "
 
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

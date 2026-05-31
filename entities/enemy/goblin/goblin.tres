@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Status" format=3 uid="uid://dh6ju5gf3krye"]
+
+[ext_resource type="Script" uid="uid://dymhou75kqu68" path="res://shared/status/status.gd" id="1_hdghf"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_hdghf")
+base_max_defense = 1.0
+base_max_speed = 10.0
+metadata/_custom_type_script = "uid://dymhou75kqu68"

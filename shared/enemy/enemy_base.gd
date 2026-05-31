@@ -16,6 +16,8 @@ extends CharacterBody2D
 
 @onready var player = get_tree().get_first_node_in_group("player")
 
+var direction: Vector2
+
 var health: float
 
 enum State {
@@ -26,7 +28,7 @@ enum State {
 
 var is_hit: bool = false
 
-var current_state = State.IDLE
+var current_state = State.MOVE
 
 
 func change_state(new_state: State) -> void:
@@ -34,6 +36,10 @@ func change_state(new_state: State) -> void:
 		return
 
 	current_state = new_state
+
+
+func _ready() -> void:
+	init_enemy()
 
 
 func _physics_process(_delta: float) -> void:
@@ -66,7 +72,10 @@ func state_idle() -> void:
 
 
 func state_move() -> void:
-	velocity.x = -1 * status.current_speed
+	direction = Vector2.LEFT
+
+	velocity = direction * status.current_speed
+	animation_direction("move")
 
 	move_and_slide()
 
@@ -77,6 +86,18 @@ func state_move() -> void:
 func state_hit() -> void:
 	if !is_hit:
 		change_state(State.MOVE)
+
+
+func animation_direction(action: String) -> void:
+	match direction:
+		Vector2.LEFT:
+			sprite.play(str("%s_left" % action))
+		Vector2.RIGHT:
+			sprite.play(str("%s_right" % action))
+		Vector2.UP:
+			sprite.play(str("%s_up" % action))
+		Vector2.DOWN:
+			sprite.play(str("%s_down" % action))
 
 
 func knockback() -> void:

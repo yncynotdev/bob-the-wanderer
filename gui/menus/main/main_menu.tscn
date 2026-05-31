@@ -38,7 +38,7 @@ theme_override_constants/margin_bottom = 15
 
 [node name="TitleLabel" parent="Panel/VBoxContainer/MarginContainer" unique_id=1277626003 instance=ExtResource("1_xk52o")]
 layout_mode = 2
-text = "John the Wanderer"
+text = "Bob the Wanderer"
 horizontal_alignment = 1
 
 [node name="StartButton" parent="Panel/VBoxContainer" unique_id=1043581098 instance=ExtResource("2_at0em")]

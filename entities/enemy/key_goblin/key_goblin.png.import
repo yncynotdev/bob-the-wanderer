@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnpcal8delfeu"
-path="res://.godot/imported/Idle.png-98a0c005637d78a87942cf2c3efe83f5.ctex"
+uid="uid://kd5y8nl2jlcv"
+path="res://.godot/imported/key_goblin.png-00a9f5d88c32d8317e3a84eab1747d20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/player/assets/Idle.png"
-dest_files=["res://.godot/imported/Idle.png-98a0c005637d78a87942cf2c3efe83f5.ctex"]
+source_file="res://entities/enemy/key_goblin/key_goblin.png"
+dest_files=["res://.godot/imported/key_goblin.png-00a9f5d88c32d8317e3a84eab1747d20.ctex"]
 
 [params]
 

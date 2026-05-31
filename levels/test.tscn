@@ -2,12 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://cuy7s7elijy6v" path="res://entities/player/scene/player.tscn" id="1_72lju"]
 [ext_resource type="Script" uid="uid://dymhou75kqu68" path="res://shared/status/status.gd" id="2_ny0t1"]
-[ext_resource type="PackedScene" uid="uid://crjts6djm3w2a" path="res://entities/enemy/bamboo/scene/bamboo.tscn" id="3_r4e4k"]
+[ext_resource type="PackedScene" uid="uid://csrdlyui8djjl" path="res://entities/enemy/goblin/goblin.tscn" id="3_r4e4k"]
 [ext_resource type="PackedScene" uid="uid://cdmrkn4ro72q3" path="res://shared/audio/level_bgm.tscn" id="4_r4e4k"]
 
 [sub_resource type="Resource" id="Resource_r4e4k"]
 resource_local_to_scene = true
 script = ExtResource("2_ny0t1")
+metadata/_custom_type_script = "uid://dymhou75kqu68"
+
+[sub_resource type="Resource" id="Resource_pnvjf"]
+resource_local_to_scene = true
+script = ExtResource("2_ny0t1")
+base_max_defense = 1.0
+base_max_speed = 10.0
 metadata/_custom_type_script = "uid://dymhou75kqu68"
 
 [node name="Test" type="Node2D" unique_id=714938562]
@@ -18,7 +25,9 @@ zoom = Vector2(2, 2)
 [node name="Player" parent="." unique_id=303148737 instance=ExtResource("1_72lju")]
 status = SubResource("Resource_r4e4k")
 
-[node name="Bamboo" parent="." unique_id=1680700193 instance=ExtResource("3_r4e4k")]
-position = Vector2(32, 42)
+[node name="Goblin" parent="." unique_id=2147005555 instance=ExtResource("3_r4e4k")]
+position = Vector2(108, 0)
+status = SubResource("Resource_pnvjf")
 
 [node name="LevelBMG" parent="." unique_id=1664309393 instance=ExtResource("4_r4e4k")]
+bus = &"Master"

@@ -104,28 +104,28 @@ func idle() -> void:
 		change_state(State.HIT)
 
 
-func move_animation() -> void:
+func animation_direction(action: String) -> void:
 	match direction:
 		Vector2.LEFT:
-			sprite.play("move_left")
+			sprite.play(str("%s_left" % action))
 			weapon_placeholder.position = Vector2(-8.0, 4.0)
 			weapon_placeholder.rotation_degrees = 90.0
 		Vector2.RIGHT:
-			sprite.play("move_right")
+			sprite.play(str("%s_right" % action))
 			weapon_placeholder.position = Vector2(8.0, 4.0)
 			weapon_placeholder.rotation_degrees = 270.0
 		Vector2.UP:
-			sprite.play("move_up")
+			sprite.play(str("%s_up" % action))
 			weapon_placeholder.position = Vector2(-3.0, -8.0)
 			weapon_placeholder.rotation_degrees = 180.0
 		Vector2.DOWN:
-			sprite.play("move_down")
 			weapon_placeholder.position = Vector2(-3.0, 8.0)
 			weapon_placeholder.rotation_degrees = 0.0
+			sprite.play(str("%s_down" % action))
 
 
 func state_move() -> void:
-	move_animation()
+	animation_direction("move")
 
 	velocity = direction * speed
 
@@ -138,24 +138,12 @@ func state_move() -> void:
 		change_state(State.HIT)
 
 
-func attack_animation() -> void:
-	match direction:
-		Vector2.LEFT:
-			sprite.play("attack_left")
-		Vector2.RIGHT:
-			sprite.play("attack_right")
-		Vector2.UP:
-			sprite.play("attack_up")
-		Vector2.DOWN:
-			sprite.play("attack_down")
-
-
 func state_attack() -> void:
 	idle()
 
 	if is_attacked_pressed and is_attacked:
 		is_attacked_pressed = false
-		attack_animation()
+		animation_direction("attack")
 
 	if !is_attacked:
 		change_state(State.MOVE)
@@ -175,6 +163,8 @@ func stop_attacking() -> void:
 
 
 func state_hit() -> void:
+	animation_direction("hit")
+
 	if !is_hit:
 		change_state(State.MOVE)
 
