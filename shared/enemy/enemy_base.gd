@@ -116,7 +116,7 @@ func state_chase(delta: float) -> void:
 		change_state(State.HIT)
 
 
-func navigation_logic(delta: float) -> void:
+func navigation_logic(_delta: float) -> void:
 	if NavigationServer2D.map_get_iteration_id(navigation_agent_2d.get_navigation_map()) == 0:
 		return
 
@@ -152,6 +152,10 @@ func state_dead() -> void:
 	hurtbox_collision.disabled = true
 	hitbox_collision.disabled = true
 
+	await get_tree().create_timer(0.5).timeout
+
+	queue_free()
+
 
 func instantiate_loot() -> void:
 	if !loot.loot_scene:
@@ -162,19 +166,14 @@ func instantiate_loot() -> void:
 
 func animation_direction(action: String) -> void:
 	var calc_dir = round(direction)
-	print("DEBUG EnemyBase calc_dir - ", calc_dir)
 	match calc_dir:
 		Vector2.LEFT:
-			print("DEBUG: EnemyBase direction is left")
 			sprite.play(str("%s_left" % action))
 		Vector2.RIGHT:
-			print("DEBUG: EnemyBase direction is right")
 			sprite.play(str("%s_right" % action))
 		Vector2.UP:
-			print("DEBUG: EnemyBase direction is up")
 			sprite.play(str("%s_up" % action))
 		Vector2.DOWN:
-			print("DEBUG: EnemyBase direction is down")
 			sprite.play(str("%s_down" % action))
 
 

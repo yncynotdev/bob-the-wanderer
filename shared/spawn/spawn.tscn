@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cvq1u87qx50ap"]
+
+[ext_resource type="Script" uid="uid://didovambfgfsh" path="res://shared/spawn/spawn.gd" id="1_6q8an"]
+
+[node name="Spawn" type="Marker2D" unique_id=948019068]
+script = ExtResource("1_6q8an")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1900936066]
+one_shot = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

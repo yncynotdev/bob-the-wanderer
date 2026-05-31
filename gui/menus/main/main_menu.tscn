@@ -53,6 +53,8 @@ text = "Settings"
 layout_mode = 2
 text = "Exit"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1925957743]
+
 [connection signal="pressed" from="Panel/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -44,6 +44,7 @@ animations = [{
 size = Vector2(14, 12)
 
 [node name="Orbs" unique_id=1935515335 instance=ExtResource("1_uri5r")]
+scale = Vector2(0.5, 0.5)
 collision_mask = 2
 script = ExtResource("2_jiw26")
 

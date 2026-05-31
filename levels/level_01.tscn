@@ -1,0 +1,205 @@
+[gd_scene format=4 uid="uid://bqpwwdeljsy00"]
+
+[ext_resource type="TileSet" uid="uid://f5fxprfqcov0" path="res://levels/default_tile_set.tres" id="1_3h7e4"]
+[ext_resource type="PackedScene" uid="uid://cuy7s7elijy6v" path="res://entities/player/scene/player.tscn" id="2_wojuy"]
+[ext_resource type="Script" uid="uid://dymhou75kqu68" path="res://shared/status/status.gd" id="3_4vdj0"]
+[ext_resource type="PackedScene" uid="uid://cup0j3te6wi1h" path="res://entities/enemy/key_goblin/key_goblin.tscn" id="4_t57r4"]
+[ext_resource type="PackedScene" uid="uid://csrdlyui8djjl" path="res://entities/enemy/goblin/goblin.tscn" id="5_6u5vw"]
+[ext_resource type="PackedScene" uid="uid://cvq1u87qx50ap" path="res://shared/spawn/spawn.tscn" id="6_q7ibo"]
+[ext_resource type="PackedScene" uid="uid://bib7ukexey0yg" path="res://shared/zones/zones.tscn" id="7_cg8v6"]
+[ext_resource type="PackedScene" uid="uid://dugg0glgqmb2w" path="res://shared/managers/enemy/enemy_manager.tscn" id="7_j0sdw"]
+
+[sub_resource type="Resource" id="Resource_cg8v6"]
+resource_local_to_scene = true
+script = ExtResource("3_4vdj0")
+base_max_attack = 99.0
+metadata/_custom_type_script = "uid://dymhou75kqu68"
+
+[node name="Level01" type="Node2D" unique_id=714938562]
+
+[node name="BaseTileMapLayer" type="TileMapLayer" parent="." unique_id=99506635]
+tile_map_data = PackedByteArray("AAAAAAAAAAAFAAAAAAAAAAEAAAAEAAIAAAAAAAIAAAAEAAIAAAAAAAMAAAAEAAIAAAAAAAQAAAAEAAIAAAAAAAUAAAAEAAIAAAAAAAYAAAAEAAIAAAAAAAcAAAAEAAIAAAAAAAgAAAAEAAIAAAAAAAkAAAAEAAIAAAAAAAoAAAAEAAIAAAAAAAsAAAAEAAIAAAAAAAwAAAAEAAIAAAAAAA0AAAAEAAIAAAAAAA4AAAAEAAIAAAAAAA8AAAAEAAIAAAAAABAAAAAEAAIAAAAAABEAAAAEAAIAAAAAABIAAAAEAAIAAAAAABMAAAAEAAIAAAAAABQAAAAEAAIAAAAAABUAAAAEAAIAAAAAABYAAAAFAAIAAAABAAAAAAAGAAAAAAABAAEAAAAHAAQAAAABAAIAAAAHAAQAAAABAAMAAAAHAAQAAAABAAQAAAAHAAQAAAABAAUAAAAHAAQAAAABAAYAAAAHAAQAAAABAAcAAAAHAAQAAAABAAgAAAAHAAQAAAABAAkAAAAHAAQAAAABAAoAAAAHAAQAAAABAAsAAAAHAAQAAAABAAwAAAAHAAQAAAABAA0AAAAHAAQAAAABAA4AAAAHAAQAAAABAA8AAAAHAAQAAAABABAAAAAHAAQAAAABABEAAAAHAAQAAAABABIAAAAHAAQAAAABABMAAAAHAAQAAAABABQAAAAHAAQAAAABABUAAAAHAAQAAAABABYAAAAGAAMAAAACAAAAAAAGAAAAAAACAAEAAAAHAAQAAAACAAIAAAAFAAAAAAACAAMAAAAFAAEAAAACAAQAAAAFAAEAAAACAAUAAAAFAAEAAAACAAYAAAAFAAIAAAACAAcAAAAHAAQAAAACAA8AAAAHAAQAAAACABAAAAAFAAAAAAACABEAAAAFAAEAAAACABIAAAAFAAEAAAACABMAAAAFAAEAAAACABQAAAAFAAIAAAACABUAAAAHAAQAAAACABYAAAAGAAMAAAADAAAAAAAGAAAAAAADAAEAAAAHAAQAAAADAAIAAAAGAAAAAAADAAMAAAAHAAQAAAADAAQAAAAHAAQAAAADAAUAAAAHAAQAAAADAAYAAAAGAAAAAAADAAcAAAAHAAQAAAADAA8AAAAHAAQAAAADABAAAAAGAAAAAAADABEAAAAHAAQAAAADABIAAAAHAAQAAAADABMAAAAHAAQAAAADABQAAAAGAAAAAAADABUAAAAHAAQAAAADABYAAAAGAAMAAAAEAAAAAAAGAAAAAAAEAAEAAAAHAAQAAAAEAAIAAAAGAAAAAAAEAAMAAAAHAAQAAAAEAAQAAAAHAAQAAAAEAAUAAAAHAAQAAAAEAAYAAAAGAAAAAAAEAAcAAAAHAAQAAAAEAA8AAAAHAAQAAAAEABAAAAAGAAAAAAAEABEAAAAHAAQAAAAEABIAAAAHAAQAAAAEABMAAAAHAAQAAAAEABQAAAAGAAAAAAAEABUAAAAHAAQAAAAEABYAAAAGAAMAAAAFAAAAAAAGAAAAAAAFAAEAAAAHAAQAAAAFAAIAAAAGAAAAAAAFAAMAAAAHAAQAAAAFAAQAAAAHAAQAAAAFAAUAAAAHAAQAAAAFAAYAAAAGAAAAAAAFAAcAAAAHAAQAAAAFAA8AAAAHAAQAAAAFABAAAAAGAAAAAAAFABEAAAAHAAQAAAAFABIAAAAHAAQAAAAFABMAAAAHAAQAAAAFABQAAAAGAAAAAAAFABUAAAAHAAQAAAAFABYAAAAGAAMAAAAGAAAAAAAGAAAAAAAGAAEAAAAHAAQAAAAGAAIAAAAHAAAAAAAGAAMAAAAFAAEAAAAGAAQAAAAFAAEAAAAGAAUAAAAFAAEAAAAGAAYAAAAHAAIAAAAGAAcAAAAHAAQAAAAGAA8AAAAHAAQAAAAGABAAAAAHAAAAAAAGABEAAAAFAAEAAAAGABIAAAAFAAEAAAAGABMAAAAFAAEAAAAGABQAAAAHAAIAAAAGABUAAAAHAAQAAAAGABYAAAAGAAMAAAAHAAAAAAAGAAAAAAAHAAEAAAAHAAQAAAAHAAIAAAAHAAQAAAAHAAMAAAAHAAQAAAAHAAQAAAAHAAQAAAAHAAUAAAAHAAQAAAAHAAYAAAAHAAQAAAAHAAcAAAAHAAQAAAAHAAgAAAAHAAQAAAAHAAkAAAAHAAQAAAAHAAoAAAAHAAQAAAAHAAsAAAAHAAQAAAAHAAwAAAAHAAQAAAAHAA0AAAAHAAQAAAAHAA4AAAAHAAQAAAAHAA8AAAAHAAQAAAAHABAAAAAHAAQAAAAHABEAAAAHAAQAAAAHABIAAAAHAAQAAAAHABMAAAAHAAQAAAAHABQAAAAHAAQAAAAHABUAAAAHAAQAAAAHABYAAAAGAAMAAAAIAAAAAAAGAAAAAAAIAAEAAAAHAAQAAAAIAAIAAAACAAAAAAAIAAMAAAAHAAQAAAAIAAQAAAAEAAEAAAAIAAUAAAAEAAIAAAAIAAYAAAAEAAIAAAAIAAcAAAAEAAIAAAAIAAgAAAAEAAMAAAAIAAkAAAAHAAQAAAAIAAoAAAADAAMAAAAIAAsAAAAHAAQAAAAIAAwAAAADAAMAAAAIAA0AAAAHAAQAAAAIAA4AAAADAAMAAAAIAA8AAAAHAAQAAAAIABAAAAAEAAEAAAAIABEAAAAEAAIAAAAIABIAAAAEAAMAAAAIABMAAAAHAAQAAAAIABQAAAACAAAAAAAIABUAAAAHAAQAAAAIABYAAAAGAAMAAAAJAAAAAAAGAAAAAAAJAAEAAAAHAAQAAAAJAAIAAAAGAAAAAAAJAAMAAAAHAAQAAAAJAAQAAAAHAAQAAAAJAAUAAAAHAAQAAAAJAAYAAAAHAAQAAAAJAAcAAAAHAAQAAAAJAAgAAAAHAAQAAAAJAAkAAAAHAAQAAAAJAAoAAAAHAAQAAAAJAAsAAAAHAAQAAAAJAAwAAAAHAAQAAAAJAA0AAAAHAAQAAAAJAA4AAAAHAAQAAAAJAA8AAAAHAAQAAAAJABAAAAAHAAQAAAAJABEAAAAHAAQAAAAJABIAAAAHAAQAAAAJABMAAAAHAAQAAAAJABQAAAAGAAIAAAAJABUAAAAHAAQAAAAJABYAAAAGAAMAAAALAAAAAAAGAAAAAAALAAEAAAAHAAQAAAALAAIAAAAGAAAAAAALAAMAAAAHAAQAAAALAAQAAAAHAAQAAAALAAUAAAAHAAQAAAALAAYAAAAHAAQAAAALAAcAAAAHAAQAAAALAAgAAAAHAAQAAAALAAkAAAAHAAQAAAALAAoAAAAHAAQAAAALAAsAAAAHAAQAAAALAAwAAAAHAAQAAAALAA0AAAAHAAQAAAALAA4AAAAHAAQAAAALAA8AAAAHAAQAAAALABAAAAAHAAQAAAALABEAAAAHAAQAAAALABIAAAAHAAQAAAALABMAAAAHAAQAAAALABQAAAAGAAIAAAALABUAAAAHAAQAAAALABYAAAAGAAMAAAAMAAAAAAAGAAAAAAAMAAEAAAAHAAQAAAAMAAIAAAAEAAAAAAAMAAMAAAAHAAQAAAAMAAQAAAAEAAEAAAAMAAUAAAAEAAIAAAAMAAYAAAAEAAIAAAAMAAcAAAAEAAIAAAAMAAgAAAAEAAMAAAAMAAkAAAAHAAQAAAAMAAoAAAADAAMAAAAMAAsAAAAHAAQAAAAMAAwAAAADAAMAAAAMAA0AAAAHAAQAAAAMAA4AAAADAAMAAAAMAA8AAAAHAAQAAAAMABAAAAAEAAEAAAAMABEAAAAEAAIAAAAMABIAAAAEAAMAAAAMABMAAAAHAAQAAAAMABQAAAAEAAAAAAAMABUAAAAHAAQAAAAMABYAAAAGAAMAAAANAAAAAAAGAAAAAAANAAEAAAAHAAQAAAANAAIAAAAHAAQAAAANAAMAAAAHAAQAAAANAAQAAAAHAAQAAAANAAUAAAAHAAQAAAANAAYAAAAHAAQAAAANAAcAAAAHAAQAAAANAAgAAAAHAAQAAAANAAkAAAAHAAQAAAANAAoAAAAHAAQAAAANAAsAAAAHAAQAAAANAAwAAAAHAAQAAAANAA0AAAAHAAQAAAANAA4AAAAHAAQAAAANAA8AAAAHAAQAAAANABAAAAAHAAQAAAANABEAAAAHAAQAAAANABIAAAAHAAQAAAANABMAAAAHAAQAAAANABQAAAAHAAQAAAANABUAAAAHAAQAAAANABYAAAAGAAMAAAAOAAAAAAAGAAAAAAAOAAEAAAAHAAQAAAAOAAIAAAAFAAAAAAAOAAMAAAAFAAEAAAAOAAQAAAAFAAEAAAAOAAUAAAAFAAEAAAAOAAYAAAAFAAIAAAAOAAcAAAAHAAQAAAAOAAgAAAACAAAAAAAOAAkAAAAHAAQAAAAOAAoAAAAEAAEAAAAOAAsAAAAEAAIAAAAOAAwAAAAEAAMAAAAOAA0AAAAHAAQAAAAOAA4AAAAAAAMAAAAOAA8AAAAHAAQAAAAOABAAAAAFAAAAAAAOABEAAAAFAAEAAAAOABIAAAAFAAEAAAAOABMAAAAFAAEAAAAOABQAAAAFAAIAAAAOABUAAAAHAAQAAAAOABYAAAAGAAMAAAAPAAAAAAAGAAAAAAAPAAEAAAAHAAQAAAAPAAIAAAAGAAAAAAAPAAMAAAAHAAQAAAAPAAQAAAAHAAQAAAAPAAUAAAAHAAQAAAAPAAYAAAAGAAAAAAAPAAcAAAAHAAQAAAAPAAgAAAAGAAAAAAAPAAkAAAAHAAQAAAAPAAoAAAAHAAQAAAAPAAsAAAAHAAQAAAAPAAwAAAAHAAQAAAAPAA0AAAAHAAQAAAAPAA4AAAABAAMAAAAPAA8AAAAHAAQAAAAPABAAAAAGAAAAAAAPABEAAAAHAAQAAAAPABIAAAAHAAQAAAAPABMAAAAHAAQAAAAPABQAAAAGAAAAAAAPABUAAAAHAAQAAAAPABYAAAAGAAMAAAAQAAAAAAAGAAAAAAAQAAEAAAAHAAQAAAAQAAIAAAAGAAAAAAAQAAMAAAAHAAQAAAAQAAQAAAAHAAQAAAAQAAUAAAAHAAQAAAAQAAYAAAAGAAAAAAAQAAcAAAAHAAQAAAAQAAgAAAAHAAAAAAAQAAkAAAAEAAIAAAAQAAoAAAAEAAIAAAAQAAsAAAAEAAIAAAAQAAwAAAAEAAMAAAAQAA0AAAAHAAQAAAAQAA4AAAABAAMAAAAQAA8AAAAHAAQAAAAQABAAAAAGAAAAAAAQABEAAAAHAAQAAAAQABIAAAAHAAQAAAAQABMAAAAHAAQAAAAQABQAAAAGAAAAAAAQABUAAAAHAAQAAAAQABYAAAAGAAMAAAARAAAAAAAGAAAAAAARAAEAAAAHAAQAAAARAAIAAAAGAAAAAAARAAMAAAAHAAQAAAARAAQAAAAHAAQAAAARAAUAAAAHAAQAAAARAAYAAAAGAAAAAAARAAcAAAAHAAQAAAARAAgAAAAHAAQAAAARAAkAAAAHAAQAAAARAAoAAAAHAAQAAAARAAsAAAAHAAQAAAARAAwAAAAHAAQAAAARAA0AAAAHAAQAAAARAA4AAAABAAMAAAARAA8AAAAHAAQAAAARABAAAAAGAAAAAAARABEAAAAHAAQAAAARABIAAAAHAAQAAAARABMAAAAHAAQAAAARABQAAAAGAAAAAAARABUAAAAHAAQAAAARABYAAAAGAAMAAAASAAAAAAAGAAAAAAASAAEAAAAHAAQAAAASAAIAAAAHAAAAAAASAAMAAAAFAAEAAAASAAQAAAAFAAEAAAASAAUAAAAFAAEAAAASAAYAAAAHAAIAAAASAAcAAAAHAAQAAAASAAgAAAACAAEAAAASAAkAAAACAAIAAAASAAoAAAACAAIAAAASAAsAAAACAAIAAAASAAwAAAACAAIAAAASAA0AAAACAAIAAAASAA4AAAACAAMAAAASAA8AAAAHAAQAAAASABAAAAAHAAAAAAASABEAAAAFAAEAAAASABIAAAAFAAEAAAASABMAAAAFAAEAAAASABQAAAAHAAIAAAASABUAAAAHAAQAAAASABYAAAAGAAMAAAATAAAAAAAGAAAAAAATAAEAAAAHAAQAAAATAAIAAAAHAAQAAAATAAMAAAAHAAQAAAATAAQAAAAHAAQAAAATAAUAAAAHAAQAAAATAAYAAAAHAAQAAAATAAcAAAAHAAQAAAATAAgAAAAHAAQAAAATAAkAAAAHAAQAAAATAAoAAAAHAAQAAAATAAsAAAAHAAQAAAATAAwAAAAHAAQAAAATAA0AAAAHAAQAAAATAA4AAAAHAAQAAAATAA8AAAAHAAQAAAATABAAAAAHAAQAAAATABEAAAAHAAQAAAATABIAAAAHAAQAAAATABMAAAAHAAQAAAATABQAAAAHAAQAAAATABUAAAAHAAQAAAATABYAAAAGAAMAAAAUAAAAAAAHAAAAAAAUAAEAAAAHAAEAAAAUAAIAAAAHAAEAAAAUAAMAAAAHAAEAAAAUAAQAAAAHAAEAAAAUAAUAAAAHAAEAAAAUAAYAAAAHAAEAAAAUAAcAAAAHAAEAAAAUAAgAAAAHAAEAAAAUAAkAAAAHAAEAAAAUAAoAAAAHAAEAAAAUAAsAAAAHAAEAAAAUAAwAAAAHAAEAAAAUAA0AAAAHAAEAAAAUAA4AAAAHAAEAAAAUAA8AAAAHAAEAAAAUABAAAAAHAAEAAAAUABEAAAAHAAEAAAAUABIAAAAHAAEAAAAUABMAAAAHAAEAAAAUABQAAAAHAAEAAAAUABUAAAAHAAEAAAAUABYAAAAHAAIAAAAKAAAAAAAGAAAAAAAKABYAAAAGAAAAAAAKAAEAAAAHAAQAAAAKAAIAAAADAAAAAAAKAAMAAAADAAEAAAAKAAQAAAADAAEAAAAKAAUAAAADAAEAAAAKAAYAAAADAAEAAAAKAAcAAAADAAEAAAAKAAgAAAADAAIAAAAKAAkAAAAHAAQAAAAKAAoAAAADAAMAAAAKAAsAAAAHAAQAAAAKAAwAAAADAAMAAAAKAA0AAAAHAAQAAAAKAA4AAAADAAMAAAAKAA8AAAAGAAQAAAAKABAAAAAEAAEAAAAKABEAAAADAAEAAAAKABIAAAADAAEAAAAKABMAAAAEAAIAAAAKABQAAAAAAAQAAAAKABUAAAAHAAQAAAACAAgAAAAAAAAAAAACAAkAAAAFAAEAAAACAAoAAAAFAAEAAAACAAsAAAAFAAEAAAACAAwAAAAFAAEAAAACAA0AAAAFAAEAAAACAA4AAAAEAAMAAAADAAgAAAAGAAAAAAADAAkAAAAHAAQAAAADAAoAAAAHAAQAAAADAAsAAAAHAAQAAAADAAwAAAAHAAQAAAADAA0AAAAHAAQAAAADAA4AAAAHAAQAAAAEAAgAAAAGAAAAAAAEAAkAAAAHAAQAAAAEAAoAAAAEAAEAAAAEAAsAAAAEAAIAAAAEAAwAAAAEAAIAAAAEAA0AAAAEAAIAAAAEAA4AAAAFAAIAAAAFAAgAAAAGAAAAAAAFAAkAAAAHAAQAAAAFAAoAAAAHAAQAAAAFAAsAAAAHAAQAAAAFAAwAAAAHAAQAAAAFAA0AAAAHAAQAAAAFAA4AAAABAAMAAAAGAAgAAAABAAAAAAAGAAkAAAAHAAQAAAAGAAoAAAACAAEAAAAGAAsAAAACAAIAAAAGAAwAAAACAAIAAAAGAA0AAAACAAIAAAAGAA4AAAACAAMAAAA=")
+tile_set = ExtResource("1_3h7e4")
+metadata/_edit_lock_ = true
+
+[node name="OrbsTileMapLayer" type="TileMapLayer" parent="." unique_id=1981295431]
+tile_map_data = PackedByteArray("AAABAAEAAwAAAAAAAQABAAIAAwAAAAAAAQABAAMAAwAAAAAAAQABAAQAAwAAAAAAAQABAAUAAwAAAAAAAQABAAYAAwAAAAAAAQABAAcAAwAAAAAAAQABAAgAAwAAAAAAAQABAAkAAwAAAAAAAQABAAoAAwAAAAAAAQABAAsAAwAAAAAAAQABAAwAAwAAAAAAAQABAA0AAwAAAAAAAQABAA4AAwAAAAAAAQABAA8AAwAAAAAAAQABABAAAwAAAAAAAQABABEAAwAAAAAAAQABABIAAwAAAAAAAQABABMAAwAAAAAAAQABABQAAwAAAAAAAQABABUAAwAAAAAAAQACABUAAwAAAAAAAQADABUAAwAAAAAAAQAEABUAAwAAAAAAAQAFABUAAwAAAAAAAQAGABUAAwAAAAAAAQAHABUAAwAAAAAAAQAIABUAAwAAAAAAAQAJABUAAwAAAAAAAQAKABUAAwAAAAAAAQALABUAAwAAAAAAAQAMABUAAwAAAAAAAQANABUAAwAAAAAAAQAOABUAAwAAAAAAAQAPABUAAwAAAAAAAQAQABUAAwAAAAAAAQARABUAAwAAAAAAAQASABUAAwAAAAAAAQATABUAAwAAAAAAAQATAAgAAwAAAAAAAQATAAkAAwAAAAAAAQATAAoAAwAAAAAAAQATAAsAAwAAAAAAAQATAAwAAwAAAAAAAQATAA0AAwAAAAAAAQATAA4AAwAAAAAAAQATAA8AAwAAAAAAAQATABAAAwAAAAAAAQATABEAAwAAAAAAAQATABIAAwAAAAAAAQATABMAAwAAAAAAAQATABQAAwAAAAAAAQATAAEAAwAAAAAAAQATAAIAAwAAAAAAAQATAAMAAwAAAAAAAQATAAQAAwAAAAAAAQATAAUAAwAAAAAAAQATAAYAAwAAAAAAAQATAAcAAwAAAAAAAQACAAEAAwAAAAAAAQADAAEAAwAAAAAAAQAEAAEAAwAAAAAAAQAFAAEAAwAAAAAAAQAGAAEAAwAAAAAAAQAHAAEAAwAAAAAAAQAIAAEAAwAAAAAAAQAJAAEAAwAAAAAAAQAKAAEAAwAAAAAAAQALAAEAAwAAAAAAAQAMAAEAAwAAAAAAAQANAAEAAwAAAAAAAQAOAAEAAwAAAAAAAQAPAAEAAwAAAAAAAQAQAAEAAwAAAAAAAQARAAEAAwAAAAAAAQASAAEAAwAAAAAAAQAHAAIAAwAAAAAAAQAHAAMAAwAAAAAAAQAHAAQAAwAAAAAAAQAHAAUAAwAAAAAAAQAHAAYAAwAAAAAAAQAHAAcAAwAAAAAAAQACAAcAAwAAAAAAAQADAAcAAwAAAAAAAQAEAAcAAwAAAAAAAQAFAAcAAwAAAAAAAQAGAAcAAwAAAAAAAQANAAIAAwAAAAAAAQANAAMAAwAAAAAAAQANAAQAAwAAAAAAAQANAAUAAwAAAAAAAQANAAYAAwAAAAAAAQANAAcAAwAAAAAAAQAOAAcAAwAAAAAAAQAPAAcAAwAAAAAAAQAQAAcAAwAAAAAAAQARAAcAAwAAAAAAAQASAAcAAwAAAAAAAQAHAA8AAwAAAAAAAQAHABAAAwAAAAAAAQAHABEAAwAAAAAAAQAHABIAAwAAAAAAAQAHABMAAwAAAAAAAQAHABQAAwAAAAAAAQACAA8AAwAAAAAAAQADAA8AAwAAAAAAAQAEAA8AAwAAAAAAAQAFAA8AAwAAAAAAAQAGAA8AAwAAAAAAAQANAA8AAwAAAAAAAQAOAA8AAwAAAAAAAQAPAA8AAwAAAAAAAQAQAA8AAwAAAAAAAQARAA8AAwAAAAAAAQASAA8AAwAAAAAAAQANABAAAwAAAAAAAQANABEAAwAAAAAAAQANABIAAwAAAAAAAQANABMAAwAAAAAAAQANABQAAwAAAAAAAQAIAAkAAwAAAAAAAQAJAAkAAwAAAAAAAQAKAAkAAwAAAAAAAQALAAkAAwAAAAAAAQAMAAkAAwAAAAAAAQAIAAMAAwAAAAAAAQAJAAMAAwAAAAAAAQALAAMAAwAAAAAAAQAMAAMAAwAAAAAAAQALAAQAAwAAAAAAAQALAAUAAwAAAAAAAQALAAYAAwAAAAAAAQALAAcAAwAAAAAAAQALAAgAAwAAAAAAAQAJAAQAAwAAAAAAAQAJAAUAAwAAAAAAAQAJAAYAAwAAAAAAAQAJAAcAAwAAAAAAAQAJAAgAAwAAAAAAAQA=")
+tile_set = ExtResource("1_3h7e4")
+metadata/_edit_lock_ = true
+
+[node name="Zones" parent="." unique_id=1935515335 instance=ExtResource("7_cg8v6")]
+position = Vector2(168, 8)
+
+[node name="KeyGoblin" parent="." unique_id=2147005555 instance=ExtResource("4_t57r4")]
+position = Vector2(168, 24)
+
+[node name="Player" parent="." unique_id=303148737 instance=ExtResource("2_wojuy")]
+position = Vector2(168, 216)
+status = SubResource("Resource_cg8v6")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1005294658]
+metadata/_edit_lock_ = true
+
+[node name="SpawnManager" type="Node" parent="." unique_id=70589359]
+
+[node name="Spawn" parent="SpawnManager" unique_id=948019068 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("6_q7ibo")]
+position = Vector2(24, 24)
+enemy = ExtResource("5_6u5vw")
+enemy_manager = NodePath("../../EnemyManager")
+
+[node name="Spawn2" parent="SpawnManager" unique_id=2096549342 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("6_q7ibo")]
+position = Vector2(312, 24)
+enemy = ExtResource("5_6u5vw")
+enemy_manager = NodePath("../../EnemyManager")
+
+[node name="Spawn3" parent="SpawnManager" unique_id=1731208011 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("6_q7ibo")]
+position = Vector2(24, 344)
+enemy = ExtResource("5_6u5vw")
+enemy_manager = NodePath("../../EnemyManager")
+
+[node name="Spawn4" parent="SpawnManager" unique_id=1130536317 node_paths=PackedStringArray("enemy_manager") instance=ExtResource("6_q7ibo")]
+position = Vector2(312, 344)
+enemy = ExtResource("5_6u5vw")
+enemy_manager = NodePath("../../EnemyManager")
+
+[node name="EnemyManager" parent="." unique_id=1915931006 instance=ExtResource("7_j0sdw")]
+
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84926" to="OrbsTileMapLayer/@Area2D@84926" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84927" to="OrbsTileMapLayer/@Area2D@84927" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84928" to="OrbsTileMapLayer/@Area2D@84928" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84929" to="OrbsTileMapLayer/@Area2D@84929" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84930" to="OrbsTileMapLayer/@Area2D@84930" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84931" to="OrbsTileMapLayer/@Area2D@84931" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84932" to="OrbsTileMapLayer/@Area2D@84932" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84933" to="OrbsTileMapLayer/@Area2D@84933" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84934" to="OrbsTileMapLayer/@Area2D@84934" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84935" to="OrbsTileMapLayer/@Area2D@84935" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84936" to="OrbsTileMapLayer/@Area2D@84936" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84937" to="OrbsTileMapLayer/@Area2D@84937" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84938" to="OrbsTileMapLayer/@Area2D@84938" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84939" to="OrbsTileMapLayer/@Area2D@84939" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84940" to="OrbsTileMapLayer/@Area2D@84940" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84941" to="OrbsTileMapLayer/@Area2D@84941" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84942" to="OrbsTileMapLayer/@Area2D@84942" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84943" to="OrbsTileMapLayer/@Area2D@84943" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84944" to="OrbsTileMapLayer/@Area2D@84944" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84945" to="OrbsTileMapLayer/@Area2D@84945" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84946" to="OrbsTileMapLayer/@Area2D@84946" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84947" to="OrbsTileMapLayer/@Area2D@84947" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84948" to="OrbsTileMapLayer/@Area2D@84948" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84949" to="OrbsTileMapLayer/@Area2D@84949" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84950" to="OrbsTileMapLayer/@Area2D@84950" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84951" to="OrbsTileMapLayer/@Area2D@84951" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84952" to="OrbsTileMapLayer/@Area2D@84952" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84953" to="OrbsTileMapLayer/@Area2D@84953" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84954" to="OrbsTileMapLayer/@Area2D@84954" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84955" to="OrbsTileMapLayer/@Area2D@84955" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84956" to="OrbsTileMapLayer/@Area2D@84956" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84957" to="OrbsTileMapLayer/@Area2D@84957" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84958" to="OrbsTileMapLayer/@Area2D@84958" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84959" to="OrbsTileMapLayer/@Area2D@84959" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84960" to="OrbsTileMapLayer/@Area2D@84960" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84961" to="OrbsTileMapLayer/@Area2D@84961" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84962" to="OrbsTileMapLayer/@Area2D@84962" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84963" to="OrbsTileMapLayer/@Area2D@84963" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84964" to="OrbsTileMapLayer/@Area2D@84964" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84965" to="OrbsTileMapLayer/@Area2D@84965" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84966" to="OrbsTileMapLayer/@Area2D@84966" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84967" to="OrbsTileMapLayer/@Area2D@84967" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84968" to="OrbsTileMapLayer/@Area2D@84968" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84969" to="OrbsTileMapLayer/@Area2D@84969" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84970" to="OrbsTileMapLayer/@Area2D@84970" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84971" to="OrbsTileMapLayer/@Area2D@84971" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84972" to="OrbsTileMapLayer/@Area2D@84972" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84973" to="OrbsTileMapLayer/@Area2D@84973" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84974" to="OrbsTileMapLayer/@Area2D@84974" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84975" to="OrbsTileMapLayer/@Area2D@84975" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84976" to="OrbsTileMapLayer/@Area2D@84976" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84977" to="OrbsTileMapLayer/@Area2D@84977" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84978" to="OrbsTileMapLayer/@Area2D@84978" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84979" to="OrbsTileMapLayer/@Area2D@84979" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84980" to="OrbsTileMapLayer/@Area2D@84980" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84981" to="OrbsTileMapLayer/@Area2D@84981" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84982" to="OrbsTileMapLayer/@Area2D@84982" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84983" to="OrbsTileMapLayer/@Area2D@84983" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84984" to="OrbsTileMapLayer/@Area2D@84984" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84985" to="OrbsTileMapLayer/@Area2D@84985" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84986" to="OrbsTileMapLayer/@Area2D@84986" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84987" to="OrbsTileMapLayer/@Area2D@84987" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84988" to="OrbsTileMapLayer/@Area2D@84988" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84989" to="OrbsTileMapLayer/@Area2D@84989" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84990" to="OrbsTileMapLayer/@Area2D@84990" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84991" to="OrbsTileMapLayer/@Area2D@84991" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84992" to="OrbsTileMapLayer/@Area2D@84992" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84993" to="OrbsTileMapLayer/@Area2D@84993" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84994" to="OrbsTileMapLayer/@Area2D@84994" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84995" to="OrbsTileMapLayer/@Area2D@84995" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84996" to="OrbsTileMapLayer/@Area2D@84996" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84997" to="OrbsTileMapLayer/@Area2D@84997" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84998" to="OrbsTileMapLayer/@Area2D@84998" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@84999" to="OrbsTileMapLayer/@Area2D@84999" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85000" to="OrbsTileMapLayer/@Area2D@85000" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85001" to="OrbsTileMapLayer/@Area2D@85001" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85002" to="OrbsTileMapLayer/@Area2D@85002" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85003" to="OrbsTileMapLayer/@Area2D@85003" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85004" to="OrbsTileMapLayer/@Area2D@85004" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85005" to="OrbsTileMapLayer/@Area2D@85005" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85006" to="OrbsTileMapLayer/@Area2D@85006" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85007" to="OrbsTileMapLayer/@Area2D@85007" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85008" to="OrbsTileMapLayer/@Area2D@85008" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85009" to="OrbsTileMapLayer/@Area2D@85009" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85010" to="OrbsTileMapLayer/@Area2D@85010" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85011" to="OrbsTileMapLayer/@Area2D@85011" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85012" to="OrbsTileMapLayer/@Area2D@85012" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85013" to="OrbsTileMapLayer/@Area2D@85013" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85014" to="OrbsTileMapLayer/@Area2D@85014" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85015" to="OrbsTileMapLayer/@Area2D@85015" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85016" to="OrbsTileMapLayer/@Area2D@85016" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85017" to="OrbsTileMapLayer/@Area2D@85017" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85018" to="OrbsTileMapLayer/@Area2D@85018" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85019" to="OrbsTileMapLayer/@Area2D@85019" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85020" to="OrbsTileMapLayer/@Area2D@85020" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85021" to="OrbsTileMapLayer/@Area2D@85021" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85022" to="OrbsTileMapLayer/@Area2D@85022" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85023" to="OrbsTileMapLayer/@Area2D@85023" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85024" to="OrbsTileMapLayer/@Area2D@85024" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85025" to="OrbsTileMapLayer/@Area2D@85025" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85026" to="OrbsTileMapLayer/@Area2D@85026" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85027" to="OrbsTileMapLayer/@Area2D@85027" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85028" to="OrbsTileMapLayer/@Area2D@85028" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85029" to="OrbsTileMapLayer/@Area2D@85029" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85030" to="OrbsTileMapLayer/@Area2D@85030" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85031" to="OrbsTileMapLayer/@Area2D@85031" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85032" to="OrbsTileMapLayer/@Area2D@85032" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85033" to="OrbsTileMapLayer/@Area2D@85033" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85034" to="OrbsTileMapLayer/@Area2D@85034" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85035" to="OrbsTileMapLayer/@Area2D@85035" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85036" to="OrbsTileMapLayer/@Area2D@85036" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85037" to="OrbsTileMapLayer/@Area2D@85037" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85038" to="OrbsTileMapLayer/@Area2D@85038" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85039" to="OrbsTileMapLayer/@Area2D@85039" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85040" to="OrbsTileMapLayer/@Area2D@85040" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85041" to="OrbsTileMapLayer/@Area2D@85041" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85042" to="OrbsTileMapLayer/@Area2D@85042" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85043" to="OrbsTileMapLayer/@Area2D@85043" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85044" to="OrbsTileMapLayer/@Area2D@85044" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85045" to="OrbsTileMapLayer/@Area2D@85045" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85046" to="OrbsTileMapLayer/@Area2D@85046" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85047" to="OrbsTileMapLayer/@Area2D@85047" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85048" to="OrbsTileMapLayer/@Area2D@85048" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85049" to="OrbsTileMapLayer/@Area2D@85049" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85050" to="OrbsTileMapLayer/@Area2D@85050" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85051" to="OrbsTileMapLayer/@Area2D@85051" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85052" to="OrbsTileMapLayer/@Area2D@85052" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85053" to="OrbsTileMapLayer/@Area2D@85053" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85054" to="OrbsTileMapLayer/@Area2D@85054" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85055" to="OrbsTileMapLayer/@Area2D@85055" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85056" to="OrbsTileMapLayer/@Area2D@85056" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85057" to="OrbsTileMapLayer/@Area2D@85057" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85058" to="OrbsTileMapLayer/@Area2D@85058" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85059" to="OrbsTileMapLayer/@Area2D@85059" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85060" to="OrbsTileMapLayer/@Area2D@85060" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85061" to="OrbsTileMapLayer/@Area2D@85061" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85062" to="OrbsTileMapLayer/@Area2D@85062" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85063" to="OrbsTileMapLayer/@Area2D@85063" method="_on_body_entered"]
+[connection signal="body_entered" from="OrbsTileMapLayer/@Area2D@85064" to="OrbsTileMapLayer/@Area2D@85064" method="_on_body_entered"]
