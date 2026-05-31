@@ -66,6 +66,8 @@ func _physics_process(delta: float) -> void:
 	match current_state:
 		State.IDLE:
 			state_idle()
+		State.SCATTER:
+			state_scatter()
 		State.CHASE:
 			state_chase(delta)
 		State.HIT:
@@ -102,12 +104,16 @@ func state_idle() -> void:
 		change_state(State.HIT)
 
 
-func state_chase(delta: float) -> void:
+func state_scatter() -> void:
+	pass
+
+
+func state_chase(_delta: float) -> void:
 	print("DEBUG: EnemyBase direction - ", direction)
 
 	set_movement_target(player.global_position)
 
-	navigation_logic(delta)
+	navigation_logic()
 
 	animation_direction("move")
 	# calc_animation_direction(direction)
@@ -116,7 +122,7 @@ func state_chase(delta: float) -> void:
 		change_state(State.HIT)
 
 
-func navigation_logic(_delta: float) -> void:
+func navigation_logic() -> void:
 	if NavigationServer2D.map_get_iteration_id(navigation_agent_2d.get_navigation_map()) == 0:
 		return
 

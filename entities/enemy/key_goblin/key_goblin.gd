@@ -1,24 +1,37 @@
 class_name KeyGoblin
 extends EnemyBase
 
+@export var scatter_target: Array[Spawn]
+
+var next_pos: Spawn
+
+
 func _ready() -> void:
+	current_state = State.IDLE
 	init_enemy()
 
 
-# TODO: Add more polished player avoidance
-func state_chase(delta: float) -> void:
+func state_idle() -> void:
+	next_pos = scatter_target.pick_random()
+	await get_tree().create_timer(0.5).timeout
+
+	change_state(State.SCATTER)
+
+
+func state_scatter() -> void:
 	animation_direction("move")
 
-	set_movement_target(-player.global_position)
+	set_movement_target(next_pos.global_position)
 
-	navigation_logic(delta)
-
-	# if navigation_agent_2d.avoidance_enabled:
-	# 	navigation_agent_2d.set_velocity_forced(direction)
-	# else:
-	# 	_on_velocity_computed(direction)
-
+	navigation_logic()
+	if navigation_agent_2d.is_target_reached() == true:
+		change_state(State.IDLE)
 	move_and_slide()
 
 	if is_hit:
 		change_state(State.HIT)
+
+
+func _on_area_detectables_body_entered(body: Node2D) -> void:
+	if body is Player:
+		change_state(State.IDLE)

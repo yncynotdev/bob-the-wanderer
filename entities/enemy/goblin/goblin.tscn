@@ -35,6 +35,7 @@ size = Vector2(12, 12)
 size = Vector2(16, 12)
 
 [node name="Goblin" unique_id=2147005555 instance=ExtResource("1_p1lxi")]
+collision_mask = 135
 status = SubResource("Resource_fh015")
 loot = SubResource("Resource_8dpwn")
 

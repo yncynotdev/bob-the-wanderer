@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c7ifvqyitooux" path="res://shared/loot/loot.gd" id="3_gmvw5"]
 [ext_resource type="PackedScene" uid="uid://cnqbbnfw08j10" path="res://pick_up/key/key.tscn" id="3_yn5sa"]
 [ext_resource type="Shader" uid="uid://dsromrqqfirbp" path="res://shared/fx/flash/flash.gdshader" id="6_vdbfh"]
+[ext_resource type="PackedScene" uid="uid://b3mt1gpm23wyx" path="res://shared/detectables/area_detectables.tscn" id="8_vdbfh"]
 
 [sub_resource type="Resource" id="Resource_yn5sa"]
 script = ExtResource("3_gmvw5")
@@ -29,8 +30,13 @@ size = Vector2(12, 11)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmvw5"]
 size = Vector2(16, 13)
 
-[node name="KeyGoblin" unique_id=2147005555 instance=ExtResource("1_lxco4")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_uhh4k"]
+radius = 63.0
+
+[node name="KeyGoblin" unique_id=2147005555 node_paths=PackedStringArray("scatter_target") instance=ExtResource("1_lxco4")]
+collision_layer = 128
 script = ExtResource("2_gdi15")
+scatter_target = []
 status = ExtResource("2_ucnjc")
 loot = SubResource("Resource_yn5sa")
 
@@ -51,5 +57,17 @@ shape = SubResource("RectangleShape2D_ucnjc")
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_gmvw5")
 
+[node name="NavigationAgent2D" parent="." index="5" unique_id=1617454901]
+path_postprocessing = 0
+
+[node name="AreaDetectables" parent="." index="10" unique_id=1935515335 instance=ExtResource("8_vdbfh")]
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="AreaDetectables" index="0" unique_id=864603550]
+shape = SubResource("CircleShape2D_uhh4k")
+
+[connection signal="body_entered" from="AreaDetectables" to="." method="_on_area_detectables_body_entered"]
+
 [editable path="Hitbox"]
 [editable path="Hurtbox"]
+[editable path="AreaDetectables"]
