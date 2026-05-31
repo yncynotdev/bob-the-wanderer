@@ -103,16 +103,14 @@ func state_idle() -> void:
 
 
 func state_chase(delta: float) -> void:
-	animation_direction("move")
+	print("DEBUG: EnemyBase direction - ", direction)
 
 	set_movement_target(player.global_position)
 
 	navigation_logic(delta)
 
-	# if navigation_agent_2d.avoidance_enabled:
-	# 	navigation_agent_2d.set_velocity_forced(direction)
-	# else:
-	# 	_on_velocity_computed(direction)
+	animation_direction("move")
+	# calc_animation_direction(direction)
 
 	if is_hit:
 		change_state(State.HIT)
@@ -127,9 +125,10 @@ func navigation_logic(delta: float) -> void:
 
 	var next_path_position: Vector2 = navigation_agent_2d.get_next_path_position()
 	direction = global_position.direction_to(next_path_position)
+	# direction = (next_path_position - global_position).normalized()
 
 	if navigation_agent_2d.is_target_reached() == false:
-		velocity = velocity.lerp(direction * status.current_speed, delta)
+		velocity = direction * status.current_speed
 		move_and_slide()
 
 
@@ -164,12 +163,16 @@ func instantiate_loot() -> void:
 func animation_direction(action: String) -> void:
 	match direction:
 		Vector2.LEFT:
+			print("DEBUG: EnemyBase direction is left")
 			sprite.play(str("%s_left" % action))
 		Vector2.RIGHT:
+			print("DEBUG: EnemyBase direction is right")
 			sprite.play(str("%s_right" % action))
 		Vector2.UP:
+			print("DEBUG: EnemyBase direction is up")
 			sprite.play(str("%s_up" % action))
 		Vector2.DOWN:
+			print("DEBUG: EnemyBase direction is down")
 			sprite.play(str("%s_down" % action))
 
 
