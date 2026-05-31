@@ -3,16 +3,23 @@ extends CharacterBody2D
 
 @export var status: Status
 
+@export var can_knockback: bool = true
 @export var knockback_power: float = 500.0
 
 @onready var health_component = $HealthComponent
 
 @onready var hitbox = $Hitbox
 
+@onready var hurtbox_collision = $Hurtbox/CollisionShape2D
+
 @onready var sprite = $AnimatedSprite2D
+
 @onready var hit_fx = $HitFX
 
 @onready var hurt_sfx: AudioStreamPlayer2D = $HurtSFX
+
+@onready var hurt_duration: Timer = $HurtDuration
+@export var hurt_duration_time: float = 2.0
 
 @onready var player = get_tree().get_first_node_in_group("player")
 
@@ -28,7 +35,7 @@ enum State {
 
 var is_hit: bool = false
 
-var current_state = State.MOVE
+var current_state = State.IDLE
 
 
 func change_state(new_state: State) -> void:
@@ -65,6 +72,8 @@ func init_enemy() -> void:
 func state_idle() -> void:
 	velocity = Vector2.ZERO
 
+	animation_direction('idle')
+
 	move_and_slide()
 
 	if is_hit:
@@ -84,7 +93,12 @@ func state_move() -> void:
 
 
 func state_hit() -> void:
+	hurtbox_collision.disabled = true
+
+	animation_direction('idle')
+
 	if !is_hit:
+		hurtbox_collision.disabled = false
 		change_state(State.MOVE)
 
 
@@ -109,14 +123,22 @@ func knockback() -> void:
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area is Hitbox:
-		knockback()
+		if can_knockback:
+			knockback()
+		hurt_duration.start(hurt_duration_time)
+
 		is_hit = true
+
 		hit_fx.play('cut')
-		hurt_sfx.play()
 		hit_fx.visible = true
+
+		hurt_sfx.play()
 
 
 func _on_hit_fx_animation_finished() -> void:
 	if hit_fx.animation == 'cut':
-		# hit_fx.visible = false
 		hit_fx.set_deferred("visible", false)
+
+
+func _on_hurt_duration_timeout() -> void:
+	is_hit = false

@@ -7,6 +7,8 @@ extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+@onready var hurtbox_collision = $Hurtbox/CollisionShape2D
+
 @onready var hurt_sfx: AudioStreamPlayer2D = $HurtSFX
 
 @onready var knockback_duration: Timer = $KnockbackDuration
@@ -163,9 +165,12 @@ func stop_attacking() -> void:
 
 
 func state_hit() -> void:
+	hurtbox_collision.disabled = true
+
 	animation_direction("hit")
 
 	if !is_hit:
+		hurtbox_collision.disabled = false
 		change_state(State.MOVE)
 
 

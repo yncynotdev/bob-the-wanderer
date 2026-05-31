@@ -195,7 +195,7 @@ height = 12.0
 size = Vector2(12, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qr8xl"]
-size = Vector2(12, 12)
+size = Vector2(16, 12)
 
 [node name="Goblin" unique_id=2147005555 instance=ExtResource("1_p1lxi")]
 status = ExtResource("2_4f7s6")
@@ -208,7 +208,10 @@ frame_progress = 0.99321
 [node name="CollisionShape2D" parent="." index="2" unique_id=475166942]
 shape = SubResource("CapsuleShape2D_qr8xl")
 
-[node name="CollisionShape2D" parent="Hitbox" parent_id_path=PackedInt32Array(1935515335) index="0" unique_id=864603550]
+[node name="Hitbox" parent="." index="3" unique_id=1935515335]
+visible = false
+
+[node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=864603550]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_iw8sg")
 
