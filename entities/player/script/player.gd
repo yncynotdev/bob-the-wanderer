@@ -7,6 +7,8 @@ extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 @onready var hurtbox_collision = $Hurtbox/CollisionShape2D
 
 @onready var hurt_sfx: AudioStreamPlayer2D = $HurtSFX
@@ -171,8 +173,11 @@ func state_hit() -> void:
 
 	animation_direction("hit")
 
+	animation_player.play("hit_fx")
+
 	if !is_hit:
 		hurtbox_collision.disabled = false
+		animation_player.stop()
 		change_state(State.MOVE)
 
 

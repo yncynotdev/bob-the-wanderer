@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_rkewf")
 base_max_defense = 1.0
+base_max_speed = 10.0
 metadata/_custom_type_script = "uid://dymhou75kqu68"
