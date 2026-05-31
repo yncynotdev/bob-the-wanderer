@@ -124,8 +124,8 @@ func navigation_logic(delta: float) -> void:
 		return
 
 	var next_path_position: Vector2 = navigation_agent_2d.get_next_path_position()
-	direction = global_position.direction_to(next_path_position)
-	# direction = (next_path_position - global_position).normalized()
+	# direction = global_position.direction_to(next_path_position)
+	direction = (next_path_position - global_position).normalized()
 
 	if navigation_agent_2d.is_target_reached() == false:
 		velocity = direction * status.current_speed
@@ -161,7 +161,9 @@ func instantiate_loot() -> void:
 
 
 func animation_direction(action: String) -> void:
-	match direction:
+	var calc_dir = round(direction)
+	print("DEBUG EnemyBase calc_dir - ", calc_dir)
+	match calc_dir:
 		Vector2.LEFT:
 			print("DEBUG: EnemyBase direction is left")
 			sprite.play(str("%s_left" % action))
