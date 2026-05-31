@@ -59,6 +59,7 @@ func change_state(new_state: State) -> void:
 
 
 func _ready() -> void:
+	navigation_agent_2d.velocity_computed.connect(Callable(_on_velocity_computed))
 	init_enemy()
 
 
@@ -67,7 +68,7 @@ func _physics_process(delta: float) -> void:
 		State.IDLE:
 			state_idle()
 		State.SCATTER:
-			state_scatter()
+			state_scatter(delta)
 		State.CHASE:
 			state_chase(delta)
 		State.HIT:
@@ -104,16 +105,16 @@ func state_idle() -> void:
 		change_state(State.HIT)
 
 
-func state_scatter() -> void:
+func state_scatter(_delta: float) -> void:
 	pass
 
 
-func state_chase(_delta: float) -> void:
+func state_chase(delta: float) -> void:
 	print("DEBUG: EnemyBase direction - ", direction)
 
 	set_movement_target(player.global_position)
 
-	navigation_logic()
+	navigation_logic(delta)
 
 	animation_direction("move")
 	# calc_animation_direction(direction)
@@ -122,16 +123,22 @@ func state_chase(_delta: float) -> void:
 		change_state(State.HIT)
 
 
-func navigation_logic() -> void:
+func navigation_logic(delta: float) -> void:
 	if NavigationServer2D.map_get_iteration_id(navigation_agent_2d.get_navigation_map()) == 0:
 		return
 
 	if navigation_agent_2d.is_navigation_finished():
 		return
 
+	movement_delta = status.base_speed * delta
 	var next_path_position: Vector2 = navigation_agent_2d.get_next_path_position()
-	# direction = global_position.direction_to(next_path_position)
+	var new_velocity = global_position.direction_to(next_path_position)
 	direction = (next_path_position - global_position).normalized()
+
+	if navigation_agent_2d.avoidance_enabled:
+		navigation_agent_2d.set_velocity(new_velocity)
+	else:
+		_on_velocity_computed(new_velocity)
 
 	if navigation_agent_2d.is_target_reached() == false:
 		velocity = direction * status.base_speed
@@ -211,3 +218,7 @@ func _on_hit_fx_animation_finished() -> void:
 
 func _on_hurt_duration_timeout() -> void:
 	is_hit = false
+
+
+func _on_velocity_computed(safe_velocity: Vector2) -> void:
+	global_position = global_position.move_toward(global_position + safe_velocity, movement_delta)

@@ -3,18 +3,23 @@
 [ext_resource type="PackedScene" uid="uid://b2ndn0ybwmrf4" path="res://shared/enemy/enemy_base.tscn" id="1_lxco4"]
 [ext_resource type="Script" uid="uid://4tf0c1giew5j" path="res://entities/enemy/key_goblin/key_goblin.gd" id="2_gdi15"]
 [ext_resource type="SpriteFrames" uid="uid://mrfmiqw634sn" path="res://entities/enemy/key_goblin/key_goblin_sprite_frame.tres" id="2_n5a2e"]
-[ext_resource type="Resource" uid="uid://c85qt74d5n4x6" path="res://entities/enemy/key_goblin/key_goblin.tres" id="2_ucnjc"]
 [ext_resource type="Script" uid="uid://c7ifvqyitooux" path="res://shared/loot/loot.gd" id="3_gmvw5"]
+[ext_resource type="Script" uid="uid://dymhou75kqu68" path="res://shared/status/status.gd" id="3_vdbfh"]
 [ext_resource type="PackedScene" uid="uid://cnqbbnfw08j10" path="res://pick_up/key/key.tscn" id="3_yn5sa"]
 [ext_resource type="Shader" uid="uid://dsromrqqfirbp" path="res://shared/fx/flash/flash.gdshader" id="6_vdbfh"]
 [ext_resource type="PackedScene" uid="uid://b3mt1gpm23wyx" path="res://shared/detectables/area_detectables.tscn" id="8_vdbfh"]
+
+[sub_resource type="Resource" id="Resource_sy18s"]
+resource_local_to_scene = true
+script = ExtResource("3_vdbfh")
+metadata/_custom_type_script = "uid://dymhou75kqu68"
 
 [sub_resource type="Resource" id="Resource_yn5sa"]
 script = ExtResource("3_gmvw5")
 loot_scene = ExtResource("3_yn5sa")
 metadata/_custom_type_script = "uid://c7ifvqyitooux"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vdbfh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uhh4k"]
 resource_local_to_scene = true
 shader = ExtResource("6_vdbfh")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -37,11 +42,11 @@ radius = 63.0
 collision_layer = 128
 script = ExtResource("2_gdi15")
 scatter_target = []
-status = ExtResource("2_ucnjc")
+status = SubResource("Resource_sy18s")
 loot = SubResource("Resource_yn5sa")
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=249710695]
-material = SubResource("ShaderMaterial_vdbfh")
+material = SubResource("ShaderMaterial_uhh4k")
 sprite_frames = ExtResource("2_n5a2e")
 animation = &"idle_down"
 autoplay = "idle_down"
@@ -58,7 +63,7 @@ position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_gmvw5")
 
 [node name="NavigationAgent2D" parent="." index="5" unique_id=1617454901]
-path_postprocessing = 0
+radius = 15.0
 
 [node name="HealthComponent" parent="." index="6" unique_id=1397975947]
 base_max_health = 20.0
@@ -68,6 +73,15 @@ collision_mask = 2
 
 [node name="CollisionShape2D" parent="AreaDetectables" index="0" unique_id=864603550]
 shape = SubResource("CircleShape2D_uhh4k")
+
+[node name="MarkerPivot" type="Node2D" parent="." index="11" unique_id=776058077]
+
+[node name="Marker2D" type="Marker2D" parent="MarkerPivot" index="0" unique_id=2052001415]
+position = Vector2(0, 63)
+
+[node name="RayCast2D" type="RayCast2D" parent="." index="12" unique_id=332644473]
+target_position = Vector2(0, 16)
+collision_mask = 7
 
 [connection signal="body_entered" from="AreaDetectables" to="." method="_on_area_detectables_body_entered"]
 
