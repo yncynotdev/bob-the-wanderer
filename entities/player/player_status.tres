@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Status" format=3 uid="uid://dgdis65btb8hb"]
+
+[ext_resource type="Script" uid="uid://dymhou75kqu68" path="res://shared/status/status.gd" id="1_xg4jl"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_xg4jl")
+base_attack = 10.0

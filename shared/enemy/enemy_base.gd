@@ -134,7 +134,7 @@ func navigation_logic() -> void:
 	direction = (next_path_position - global_position).normalized()
 
 	if navigation_agent_2d.is_target_reached() == false:
-		velocity = direction * status.current_speed
+		velocity = direction * status.base_speed
 		move_and_slide()
 
 

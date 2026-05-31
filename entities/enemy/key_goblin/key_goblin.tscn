@@ -14,7 +14,7 @@ script = ExtResource("3_gmvw5")
 loot_scene = ExtResource("3_yn5sa")
 metadata/_custom_type_script = "uid://c7ifvqyitooux"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sy18s"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vdbfh"]
 resource_local_to_scene = true
 shader = ExtResource("6_vdbfh")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -41,7 +41,7 @@ status = ExtResource("2_ucnjc")
 loot = SubResource("Resource_yn5sa")
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=249710695]
-material = SubResource("ShaderMaterial_sy18s")
+material = SubResource("ShaderMaterial_vdbfh")
 sprite_frames = ExtResource("2_n5a2e")
 animation = &"idle_down"
 autoplay = "idle_down"
@@ -59,6 +59,9 @@ shape = SubResource("RectangleShape2D_gmvw5")
 
 [node name="NavigationAgent2D" parent="." index="5" unique_id=1617454901]
 path_postprocessing = 0
+
+[node name="HealthComponent" parent="." index="6" unique_id=1397975947]
+base_max_health = 20.0
 
 [node name="AreaDetectables" parent="." index="10" unique_id=1935515335 instance=ExtResource("8_vdbfh")]
 collision_mask = 2

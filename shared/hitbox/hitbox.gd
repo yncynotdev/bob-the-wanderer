@@ -22,4 +22,4 @@ func _on_area_entered(area: Area2D) -> void:
 		return
 
 	if area is Hurtbox:
-		area.receive_damage(attacker_status.current_attack + weapon_damage)
+		area.receive_damage(attacker_status.base_attack + weapon_damage)

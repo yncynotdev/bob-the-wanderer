@@ -65,11 +65,16 @@ func _ready() -> void:
 
 	health = health_component.health
 
-	attack = status.current_attack
+	attack = status.base_attack
 
-	defense = status.current_defense
+	defense = status.base_defense
 
-	speed = status.current_speed
+	speed = status.base_speed
+
+	print('DEBUG: Player speed - ', speed)
+	print('DEBUG: Player attack - ', attack)
+	print('DEBUG: Player defense - ', defense)
+	print('DEBUG: Player health - ', health)
 
 
 func _physics_process(_delta: float) -> void:

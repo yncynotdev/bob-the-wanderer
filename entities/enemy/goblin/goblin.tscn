@@ -1,24 +1,17 @@
 [gd_scene format=3 uid="uid://csrdlyui8djjl"]
 
 [ext_resource type="PackedScene" uid="uid://b2ndn0ybwmrf4" path="res://shared/enemy/enemy_base.tscn" id="1_p1lxi"]
-[ext_resource type="Script" uid="uid://dymhou75kqu68" path="res://shared/status/status.gd" id="2_legkn"]
+[ext_resource type="Resource" uid="uid://dh6ju5gf3krye" path="res://entities/enemy/goblin/goblin.tres" id="2_4f7s6"]
 [ext_resource type="SpriteFrames" uid="uid://xkv6t58wcyed" path="res://entities/enemy/goblin/goblin_sprite_frame.tres" id="3_iw8sg"]
 [ext_resource type="Script" uid="uid://c7ifvqyitooux" path="res://shared/loot/loot.gd" id="3_legkn"]
 [ext_resource type="Shader" uid="uid://dsromrqqfirbp" path="res://shared/fx/flash/flash.gdshader" id="4_fqlex"]
 
-[sub_resource type="Resource" id="Resource_fh015"]
-resource_local_to_scene = true
-script = ExtResource("2_legkn")
-base_max_defense = 1.0
-base_max_speed = 10.0
-metadata/_custom_type_script = "uid://dymhou75kqu68"
-
-[sub_resource type="Resource" id="Resource_8dpwn"]
+[sub_resource type="Resource" id="Resource_fqlex"]
 resource_local_to_scene = true
 script = ExtResource("3_legkn")
 metadata/_custom_type_script = "uid://c7ifvqyitooux"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o5h8t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fh015"]
 resource_local_to_scene = true
 shader = ExtResource("4_fqlex")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -36,11 +29,11 @@ size = Vector2(16, 12)
 
 [node name="Goblin" unique_id=2147005555 instance=ExtResource("1_p1lxi")]
 collision_mask = 135
-status = SubResource("Resource_fh015")
-loot = SubResource("Resource_8dpwn")
+status = ExtResource("2_4f7s6")
+loot = SubResource("Resource_fqlex")
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=249710695]
-material = SubResource("ShaderMaterial_o5h8t")
+material = SubResource("ShaderMaterial_fh015")
 sprite_frames = ExtResource("3_iw8sg")
 animation = &"idle_down"
 autoplay = "idle_down"

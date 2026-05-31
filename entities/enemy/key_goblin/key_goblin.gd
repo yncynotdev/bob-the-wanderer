@@ -10,6 +10,11 @@ func _ready() -> void:
 	current_state = State.IDLE
 	init_enemy()
 
+	print('DEBUG: KeyGoblin speed - ', status.base_speed)
+	print('DEBUG: KeyGoblin attack - ', status.base_attack)
+	print('DEBUG: KeyGoblin defense - ', status.base_defense)
+	print('DEBUG: KeyGoblin health - ', health)
+
 
 func state_idle() -> void:
 	next_pos = scatter_target.pick_random()

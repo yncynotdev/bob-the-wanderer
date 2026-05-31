@@ -112,7 +112,6 @@ debug_use_custom = true
 debug_path_custom_color = Color(1, 0, 0.21960784, 1)
 
 [node name="HealthComponent" parent="." unique_id=1397975947 instance=ExtResource("4_tl8x4")]
-base_max_health = 20.0
 
 [node name="HurtSFX" parent="." unique_id=79005569 instance=ExtResource("6_rqm84")]
 bus = &"Master"
